@@ -1,0 +1,260 @@
+.slider {
+  width: 100%;
+  margin: 100px auto;
+}
+
+.slick-slide {
+margin: 0px 20px;
+}
+
+.slick-slide img {
+width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+color: black;
+}
+.slick-slide {
+transition: all ease-in-out .3s;
+opacity: 1;
+}
+.slick-current {
+opacity: 1;
+}
+
+
+.home{
+background: #F7F7F7;
+}
+.ok{
+width: 70%;
+margin: 0 auto;
+background: #fff;
+}
+.navbar_home{
+  width: 100% !important;
+  justify-content: space-between !important;
+  background: #fff;
+}
+.search, .user{
+  display: flex;
+}
+.btn_user{
+  box-shadow: none !important;
+  margin-left: 1em;
+}
+.inputt{
+width:400px !important;
+}
+@media only screen and (max-width: 1465px) {
+.inputt{
+ width:300px !important;
+}
+}
+@media only screen and (max-width: 1325px) {
+.inputt{
+  width:250px !important;
+}
+}
+@media only screen and (max-width: 1250px) {
+.inputt{
+  width:150px !important;
+}
+}
+@media only screen and (max-width: 1105px) {
+
+.dropdownn{
+width:115px !important;
+
+}
+.dropdownn a {
+font-size: 12px;
+}
+.inputt{
+width:136px !important;
+font-size: 12px;
+}
+.showw{
+width: 80px;
+}
+.showw a {
+font-size: 12px;
+}
+}
+
+.category_btn{
+border: 1px solid #ced4da;
+}
+.mycart:hover{
+ background: #4bb048;
+ color: #fff;
+}
+.blog{
+margin-top: 0.5em;
+padding: 1em;
+}
+.blog_admin{
+ display: flex;
+
+}
+.blog_admin .img{
+width: 20%;
+margin: 0 1em;
+
+}
+.img img{
+width: 100%;
+}
+.blog_admin h5{
+font-size: 12px;
+color: #b6b7b6;
+}
+.blog_admin a{
+font-size: 16px;
+color: #37383c;
+font-weight: 600;
+}
+
+.banner .label h1:nth-child(1){
+color: #4bb048;
+}
+.banner .label h1:nth-child(2){
+color: #481C13;
+}
+
+.deal{
+margin-top: 4em;
+
+}
+.deal .label{
+margin-bottom: 2em;
+}
+.label img{
+width: 15em;
+}
+.deal .img{
+overflow: hidden;
+}
+.deal .img img{
+width: 100%;
+transition: 1s;
+}
+.deal .img img:hover{
+transform: scale(1.1);
+}
+
+.sale{
+margin-top: 8em;
+position: relative;
+}
+.sale .label{
+position: absolute;
+top: -5em;
+z-index: 1;
+}
+
+.action:hover .addcart{
+display: block;
+animation: show 5s linear;
+}
+@keyframes show{
+0%{
+  display: none;
+}
+100%{
+  display: block;
+}
+}
+.slick-active:focus, .slick-active:focus .action{
+border: none !important;
+outline: none !important;
+}
+.slick-slide:focus{
+  outline: none ;
+}
+.productp{
+text-align: center;
+
+}
+.price{
+text-align: center;
+}
+.action{
+position: relative;
+}
+.addcart{
+position: absolute;
+width: 100%;
+top: 75%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+display: none;
+}
+.addcart button{
+border: none;
+background: #37383c;
+font-weight: 600;
+width: 20%;
+height: 2.5em;
+padding: 0;
+box-shadow: none;
+}
+.addcart button:hover{
+background: #4bb048;
+}
+.addcart button i{
+color: #fff;
+opacity: .5;
+}
+.addcart button:hover i{
+opacity: 1;
+}
+#add{
+border-radius: 4px 0 0 4px;
+}
+#reset{
+border-radius: 0px 4px 4px 0px;
+}
+.code{
+overflow: hidden;
+}
+.code img{
+width: 100%;
+transition: 1s;
+}
+.code img:hover{
+transform: scale(1.1);
+}
+
+.service{
+margin-top: 5em;
+}
+.service .label{
+margin-bottom: 1em;
+}
+.service .img{
+width: 40%;
+}
+.service h1{
+color: #4bb048;
+font-size: 30px;
+}
+.service h3{
+font-size: 16px;
+  line-height: 20px;
+  color: #37383c;
+}
+.service p{
+font-size: 12px;
+  line-height: 14px;
+  color: #969696;
+}
+.service a{
+text-decoration: underline;
+color: #4bb048;
+}
+.service .content{
+padding: .5em;
+}

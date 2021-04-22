@@ -1,0 +1,112 @@
+.cart{
+    background: #F2F2F2;
+}
+.payment{
+    width: 75%;
+    margin: 0 auto;
+}
+.payment .contain .title{
+    padding: 20px 20px;
+    margin: 10px 0; 
+    background: #fff;
+    border-radius: 5px;
+}
+.title h1{
+    font-size: 30px;
+    font-weight: 700;
+}
+.contain .product{
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 5px;
+}
+.contain .productImg img{
+    width: 100%;
+}
+.product h4{
+    font-weight: 500;
+    font-size: 30px;
+}
+.product p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #4bb048;
+}
+.product .number{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    
+}
+.product .number input{
+    width: 30px;
+    height: 30px;
+    border: none;
+    text-align: center;
+}
+
+.product .number button{
+    border: none;
+    border-radius: 50%;
+}
+.product button:focus{
+    border-radius: 50% !important;
+    border-color: transparent;
+}
+.product i{
+    color: rgb(173, 173, 173);
+}
+.number .delete{
+    position: absolute;
+    top: 0%;
+    left: 70%;
+}
+
+.product .delete button{
+    background: transparent;
+    border: none;
+}
+.product .delete i{
+    color: #000;
+}
+.buy{
+    margin: 10px 0;
+    
+}
+.pay{
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+.pay h1{
+    margin-bottom: 20px;
+}
+.pay .price{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.pay .total{
+    align-items: center;
+}
+.pay .total p:nth-child(1){
+    font-size: 14px;
+    font-weight: 700;
+}
+.pay .total p:nth-child(2){
+    font-size: 24px;
+    font-weight: 700;
+}
+.pay button{
+    width: 100%;
+    padding: 10px 10px;
+    border: none;
+    background: #FF5959;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}

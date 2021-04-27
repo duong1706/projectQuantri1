@@ -99,12 +99,13 @@
                 $pet['count'] = $_SESSION['cart'][$id]['count'] + 1;
             }
             $_SESSION['cart'][$id] = $pet;
-            $this->detail($id);
-            //header("location:" . URL . 'cart');
+            //$this->detail($id);
+            header("location:" . URL . 'pet/detail/' . $id);
         }
         function deletecart($id){
             unset($_SESSION['cart'][$id]);
-            $this->detail($id);
+            //$this->detail($id);
+            header("location:" . URL . 'pet/detail/' . $id);
         }
         function payment(){
             $this->view('payment/payment', []);

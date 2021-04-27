@@ -40,38 +40,38 @@
             
                 if($data['cart']){
                  //   $output = ``;
-                foreach($data['cart'] as $key => $value)
-                { ?>
-                    <!-- $output .= ' -->
-                    <div class="row cart__content">
-                <div class="col-2 decre_incre">
-                  
-                  
-                 
-                </div>
-                <div class="col-6 img__detail">
-                    <div class="row">
-                        <div class="col-6">
-                        <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
-                        </div>
-                        <div class="col-6">
-                          <h6><?php echo $value["name"]; ?></h6>
-                          <h6><?php echo $value["color"]; ?></h6>
-                        </div>
-
+                    foreach($data['cart'] as $key => $value)
+                    { ?>
+                        <!-- $output .= ' -->
+                        <div class="row cart__content">
+                    <div class="col-2 decre_incre">
+                    
+                    
+                    
                     </div>
+                    <div class="col-6 img__detail">
+                        <div class="row">
+                            <div class="col-6">
+                            <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
+                            </div>
+                            <div class="col-6">
+                            <h6><?php echo $value["name"]; ?></h6>
+                            <h6><?php echo $value["color"]; ?></h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-3 pet__price"><?php echo $value["name"]; ?></div>
+                    <div class="col-1">
+                    <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>"><button>x</button></a>
+                    </form>
+                    </div>
+        
+            
+            
                 </div>
-                <div class="col-3 pet__price"><?php echo $value["name"]; ?></div>
-                <div class="col-1">
-                <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>"><button>x</button></a>
-                </form>
-                </div>
-    
-           
-           
-            </div>
-              <?php     
-                }
+                <?php     
+                    }
                 
             } 
             ?>
@@ -86,6 +86,7 @@
 
 
         <div class="cart__icon">(0)Icon</div>
-
+        
+        
         <!-- id="paypal-button"  -->
         <!-- AT9PHTR_hrxkia4SkLyokNAVg-7GDYJ0wRWEwirsG1OGRKv336LQm8zmGGU40If29BBAwIu8x_t-drUC  -->

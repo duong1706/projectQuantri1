@@ -6,6 +6,8 @@
 
   <script src="https://kit.fontawesome.com/c52c16b666.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Passero+One&display=swap" rel="stylesheet">
@@ -372,8 +374,24 @@ cart__burger.addEventListener('click',function(){
 })
 </script>
 
+<script>
+    $('a#add').click(function(event){
+        event.preventDefault();
+        var href = $(this).attr('href');
+        $.ajax({
+            url: href,
+            type: 'GET',
+            data: {},
+            success: function(res){
+                swal("Them thanh cong", "ez", "success");
+                $("#num__cart").load("http://localhost:8080/PHP/DOAN #num_cart");
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-   
+            }
+        });
+    });
+</script>
+
+    
+    
 </body>
 </html>

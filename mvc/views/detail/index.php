@@ -113,7 +113,7 @@
             <h2 class="price"><?php echo '$' . $data['pet']['price']; ?></h2>
             <hr>
             <div class="addcart">
-               <button id="add" ><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>"><i class="fas fa-shopping-basket"></i></a></button>
+               <button id="add" ><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1"><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
                 </div>
@@ -333,9 +333,15 @@
   </div>
   </div>
 
-  <?php 
-        require_once "./mvc/views/payment/cart.php"
-    ?>
+  <div id="cart__show">
+    <div id="show_cart">
+    <?php 
+          require_once "./mvc/views/payment/cart.php"
+      ?>
+    </div>
+   
+  </div>
+  
 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
@@ -375,7 +381,7 @@ cart__burger.addEventListener('click',function(){
 </script>
 
 <script>
-    $('a#add').click(function(event){
+    $('a.add1').click(function(event){
         event.preventDefault();
         var href = $(this).attr('href');
         $.ajax({
@@ -384,8 +390,7 @@ cart__burger.addEventListener('click',function(){
             data: {},
             success: function(res){
                 swal("Them thanh cong", "ez", "success");
-                $("#num__cart").load("http://localhost:8080/PHP/DOAN #num_cart");
-
+               // $("#cart__show").load("http://localhost:8080/PHP/DOAN #show_cart");
             }
         });
     });

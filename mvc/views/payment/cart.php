@@ -43,7 +43,7 @@
                     foreach($data['cart'] as $key => $value)
                     { ?>
                         <!-- $output .= ' -->
-                        <div class="row cart__content">
+                        <div class="row cart__content" id="<?php echo 'pet' . $value['idPet']; ?>">
                     <div class="col-2 decre_incre">
                     
                     
@@ -63,12 +63,10 @@
                     </div>
                     <div class="col-3 pet__price"><?php echo $value["name"]; ?></div>
                     <div class="col-1">
-                    <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>"><button>x</button></a>
+                    <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>" class="removeCart" data-id="<?php echo $value['idPet']; ?>"><button>x</button></a>
                     </form>
                     </div>
         
-            
-            
                 </div>
                 <?php     
                     }
@@ -85,8 +83,23 @@
         </div>
 
 
-        <div class="cart__icon">(0)Icon</div>
+        <div class="cart__icon"><?php echo '(' . count($data['cart']) . ')Icon' ;?></div>
         
-        
+        <script>
+            $('a.removeCart').click(function(event){
+                event.preventDefault();
+                var href = $(this).attr("href");
+                var id = $(this).attr("data-id");
+                var name = "#pet" + id;
+                $.ajax({
+                    url: href,
+                    type: 'GET',
+                    data: {},
+                    success: function(){
+                        $(name).empty();
+                    }
+                });
+            });
+        </script>
         <!-- id="paypal-button"  -->
         <!-- AT9PHTR_hrxkia4SkLyokNAVg-7GDYJ0wRWEwirsG1OGRKv336LQm8zmGGU40If29BBAwIu8x_t-drUC  -->

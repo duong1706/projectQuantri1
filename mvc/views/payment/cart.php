@@ -1,4 +1,4 @@
-<div class="cart__payment">
+<div class="cart__payment" id="payment_cart">
             <div class="cart__header">
                 <div class="header__content">
                     <span>(0)item</span>
@@ -83,23 +83,9 @@
         </div>
 
 
-        <div class="cart__icon"><?php echo '(' . count($data['cart']) . ')Icon' ;?></div>
+        <div class="cart__icon" id="icon__cart"><?php echo '(' . count($data['cart']) . ')Icon' ;?></div>
         
-        <script>
-            $('a.removeCart').click(function(event){
-                event.preventDefault();
-                var href = $(this).attr("href");
-                var id = $(this).attr("data-id");
-                var name = "#pet" + id;
-                $.ajax({
-                    url: href,
-                    type: 'GET',
-                    data: {},
-                    success: function(){
-                        $(name).empty();
-                    }
-                });
-            });
-        </script>
+        
+       
         <!-- id="paypal-button"  -->
         <!-- AT9PHTR_hrxkia4SkLyokNAVg-7GDYJ0wRWEwirsG1OGRKv336LQm8zmGGU40If29BBAwIu8x_t-drUC  -->

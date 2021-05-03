@@ -113,7 +113,7 @@
             <h2 class="price"><?php echo '$' . $data['pet']['price']; ?></h2>
             <hr>
             <div class="addcart">
-               <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1" data-id="<?php echo $data['pet']['idPet']; ?>"><i class="fas fa-shopping-basket"></i></a></button>
+               <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1" ><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
                 </div>
@@ -340,6 +340,7 @@
   </div>
 
 
+  <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
@@ -359,58 +360,7 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>  
 
 
-<script>
-    $('a.add1').click(function(event){
-        event.preventDefault();
-        var href = $(this).attr('href');
-        var data_id = $(this).attr('data-id');
-        $.ajax({
-            url: href,
-            type: 'GET',
-            data: {},
-            success: function(res){
-                swal("Them thanh cong", "ez", "success");
-                $("#show_cart").load("./mvc/views/payment/cart.php")
-            }
-        });
-    });
 
-   
-    $('a.removeCart').click(function(event){
-        event.preventDefault();
-        var href = $(this).attr("href");
-        var id = $(this).attr("data-id");
-        var name = "#pet" + id;
-        $.ajax({
-            url: href,
-            type: 'GET',
-            data: {},
-            success: function(){
-                $(name).empty();
-            }
-        });
-    });
-       
-</script>
-<script >
-            const menuIcon = document.querySelector('.cart__icon');
-            const cart_payment = document.querySelector('.cart__payment');
-
-            menuIcon.addEventListener('click',function(){
-                    cart_payment.classList.add("cart__showed");
-                    cart_payment.classList.remove("cart__hidden");
-                    menuIcon.style.display="none";
-            })
-            const cart__burger = document.querySelector('.cart__burger');
-
-            cart__burger.addEventListener('click',function(){
-            cart_payment.classList.add("cart__hidden");
-            cart_payment.classList.remove("cart__showed");
-
-                    menuIcon.style.display="block";
-            })
-        </script>
-    
     
 </body>
 </html>

@@ -1,7 +1,7 @@
 <div class="cart__payment" id="payment_cart">
             <div class="cart__header">
                 <div class="header__content">
-                    <span>(0)item</span>
+                    <span>(<?php echo count($data['cart']); ?>)item</span>
                     <div class="cart__burger">
                     <div class="burger"></div>
 
@@ -19,7 +19,7 @@
                 <div class="col-6 img__detail">
                     <div class="row">
                         <div class="col-6">
-                            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="">
+                            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="cho1.jpg">
                         </div>
                         <div class="col-6">
                           <h6>The Dog Yellow</h6>

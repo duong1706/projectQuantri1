@@ -11,9 +11,12 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Passero+One&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/home.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
 
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
@@ -160,12 +163,12 @@
             <?php foreach ($data['pet'] as $key => $value) { ?>
             
             <div>
-              <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>">
+              
                 <div class="action"  ><img class="hoveri" src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
                   <div class="addcart">
-                    <button id="add"><i class="fas fa-shopping-basket" aria-hidden="true"></i></button>
+                  <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $value['idPet']; ?>" class="add1" ><i class="fas fa-shopping-basket"></i></a></button>
                     <button id="wishlist"><i class="far fa-heart" aria-hidden="true"></i></button>
-                    <button id="reset"><i class="fas fa-sync" aria-hidden="true"></i></button>
+                    <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>"><button id="reset"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
                     </div>
                   <div class="productp">
                   <a class="style" href="#"><?php echo $value['name']; ?></a>
@@ -174,13 +177,13 @@
                   <p><?php echo $value['price']; ?></p>
                   </div>
                 </div>
-              </a>
-              <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>">
+              
+              
                 <div class="action"  ><img class="hoveri" src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
                   <div class="addcart">
-                    <button id="add"><i class="fas fa-shopping-basket" aria-hidden="true"></i></button>
+                  <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $value['idPet']; ?>" class="add1"><i class="fas fa-shopping-basket"></i></a></button>
                     <button id="wishlist"><i class="far fa-heart" aria-hidden="true"></i></button>
-                    <button id="reset"><i class="fas fa-sync" aria-hidden="true"></i></button>
+                    <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>"><button id="reset"><i class="fas fa-eye" aria-hidden="true"></i></i></button></a>
                     </div>
                   <div class="productp">
                     <a class="style" href="#"><?php echo $value['name']; ?></a>
@@ -189,7 +192,7 @@
                   <p><?php echo $value['price']; ?></p>
                   </div>
                 </div>
-                </a>
+               
             </div>
             <?php } ?>
             
@@ -238,12 +241,18 @@
           </div>
         </div>
       </div>
+
       </div>
-     
+      <div id="show_cart">
+        <?php 
+              require_once "./mvc/views/payment/cart.php"
+          ?>
+      </div>
      
 
     
     <!-- Optional JavaScript -->
+    <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
   <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>

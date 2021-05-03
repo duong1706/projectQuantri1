@@ -1,13 +1,13 @@
 <?php
 class PetModel extends BaseModel{
     const TABLE = "pet";
-    //Bat dau tu day
+    //Bat dau tu day day day
     public function getAll($select, $orderBy){
         $pet = $this->all(self::TABLE, $select, $orderBy);
         return $pet;
     }
 
-    
+    ///
     public function getPet($id){
         $pet = $this->detail(self::TABLE, $id);
         return $pet;

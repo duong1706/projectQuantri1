@@ -21,6 +21,7 @@
             else{
                 $data['cart'] =[];
             }
+            $data['lct'] = $_SESSION['lct'];
             //print_r($data['cart']); die();
             $this->view('detail/index', $data);
         }
@@ -104,18 +105,10 @@
             if($_SESSION['lct'] == 1){
                 header("location:" . URL . 'pet/detail/' . $id);
             }
+            //print_r($data['cart']); die();
             else if($_SESSION['lct'] == 0){
-                $data['main'] = 'home/main';
-                $data['pet'] = $this->petModel->getAll([], []);
-                if(isset($_SESSION["cart"])){
-                    $data['cart'] = $_SESSION["cart"];
-                
-                }
-                else{
-                    $data['cart'] =[];
-                }
                 ///$this->view('home/index', $data);
-                print_r($data); die();
+                //print_r($data); die();
                 header("location:" . URL);
             }
 
@@ -129,8 +122,13 @@
                 header("location:" . URL);
             }
         }
+        function updatecart($id){
+            $value = $_POST['value'];
+            $_SESSION['cart'][$id]['count'] = $value;
+        }
         function payment(){
-            $this->view('payment/payment', []);
+            $data['cart'] = $_SESSION['cart'];
+            $this->view('payment/payment', $data);
         }
     }
 ?>

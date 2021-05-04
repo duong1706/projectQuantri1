@@ -35,13 +35,47 @@ $('a.removeCart').click(function(event){
     var href = $(this).attr("href");
     var id = $(this).attr("data-id");
     var name = "#pet" + id;
+    var lct = $(this).attr("lct");
+    var link = '';
+    if(lct === 0){
+        link = 'http://localhost:8080/projectQuanTri1 ';
+    }
+    else if(lct === 1){
+        link = 'http://localhost:8080/projectQuanTri1/pet/detail/' + id + ' ';
+    }
+    
     $.ajax({
         url: href,
         type: 'GET',
         data: {},
         success: function(){
             $(name).empty();
+            $('#show_cart').load(link + '#icon__cart')
             //$("#show_cart").load("./mvc/views/payment/cart.php")
+        }
+    });
+});
+
+$('input.change').blur(function(event){
+    var id = $(this).attr("data-id");
+    var cart__content = "#cart__content" + id;
+    var value = $(this).val();
+    var totalPet = '#totalPet' + id;
+    var href = "http://localhost:8080/projectQuanTri1/pet/updatecart/" + id;
+    
+   
+    var link = './mvc/views/payment/cart.php ';
+    if(value <= 0){
+        value = 1;
+    }
+    
+    $.ajax({
+        url: href,
+        type: "POST",
+        data: {value:value},
+        success:function(res){
+            $(cart__content).load(link + totalPet);
+            $('#total__cart').load(link + "#total_cart");
         }
     });
 });

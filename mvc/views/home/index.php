@@ -175,21 +175,7 @@
                   </div>
                 </div>
               </a>
-              <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>">
-                <div class="action"  ><img class="hoveri" src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
-                  <div class="addcart">
-                    <button id="add"><i class="fas fa-shopping-basket" aria-hidden="true"></i></button>
-                    <button id="wishlist"><i class="far fa-heart" aria-hidden="true"></i></button>
-                    <button id="reset"><i class="fas fa-sync" aria-hidden="true"></i></button>
-                    </div>
-                  <div class="productp">
-                    <a class="style" href="#"><?php echo $value['name']; ?></a>
-                  </div>
-                  <div class="price">
-                  <p><?php echo $value['price']; ?></p>
-                  </div>
-                </div>
-                </a>
+              
             </div>
             <?php } ?>
             

@@ -1,3 +1,7 @@
+<?php
+  $tong = 0;
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,54 +32,36 @@
                 <div class="title">
                   <h1>Shopping Cart</h1>
                 </div>
-                <div class="product">
-                  <div class="row">
-                    <div class="col-md-2 productImg">
-                      <img src="../public/img/x3.jpg" alt="">
-                    </div>
-                    <div class="col-md-8">
-                      <h4>Yoda Dog Costume</h4>
-                      <p>$502.39</p>
-                    </div>
-                    <div class="col-md-2 number">
-                      <div class="delete">
-                        <span></span>
-                        <button><i class="far fa-trash-alt"></i></button>
+                <?php 
+                  foreach ($data['cart'] as $value) { ?>
+                     <div class="product">
+                      <div class="row">
+                        <div class="col-md-2 productImg">
+                          <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
+                        </div>
+                        <div class="col-md-8">
+                          <h4><?php echo $value['name']; ?></h4>
+                          <p><?php 
+                            echo '$' . number_format($value['price'] * $value['count']); 
+                            $tong += ($value['price'] * $value['count']);
+                          ?></p>
+                        </div>
+                        <div class="col-md-2 number">
+                          <div class="delete">
+                            <span></span>
+                            <button><i class="far fa-trash-alt"></i></button>
+                          </div>
+                          
+                          
+                          <form action="">
+                            <input type="text" value = <?php echo $value['count']; ?>> 
+                          </form>
+                        </div>
                       </div>
-                      
-                      <button class="increase"><i class="fas fa-minus"></i></button>
-                      <form action="">
-                        <input type="text" value = 1> 
-                      </form>
-                      <button class="decrease"><i class="fas fa-plus"></i></button>
-                      
-                     
                     </div>
-                  </div>
-                </div>
-                <div class="product">
-                  <div class="row">
-                    <div class="col-md-2 productImg">
-                      <img src="../public/img/x3.jpg" alt="">
-                    </div>
-                    <div class="col-md-8">
-                      <h4>Yoda Dog Costume</h4>
-                      <p>$502.39</p>
-                    </div>
-                    <div class="col-md-2 number">
-                      <div class="delete">
-                        <span></span>
-                        <button><i class="far fa-trash-alt"></i></button>
-                      </div>
-                      
-                      <button class="increase"><i class="fas fa-minus"></i></button>
-                      <form action="">
-                        <input type="text" value = 1> 
-                      </form>
-                      <button class="decrease"><i class="fas fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
+                <?php } ?>
+               
+               
               </div>
               
             </div>
@@ -87,16 +73,19 @@
                 
                 <div class="subtotal price">
                   <p>Subtotal</p>
-                  <p>$0.00</p>
+                  <p><?php echo '$' . number_format($tong); ?></p>
                 </div>
                 <div class="ship price">
                   <p>Shipping</p>
-                  <p>$0.00</p>
+                  <p><?php
+                    echo '$10';
+                    $tong += 10;
+                  ?></p>
                 </div>
                 <hr>
                 <div class="total price">
                   <p>Total</p>
-                  <p>$0.00</p>
+                  <p id="totalAll" fee=<?php echo $tong; ?>><?php echo '$' . number_format($tong); ?></p>
                 </div>
             
               
@@ -116,6 +105,10 @@
     <script src="https://www.paypal.com/sdk/js?client-id=AT9PHTR_hrxkia4SkLyokNAVg-7GDYJ0wRWEwirsG1OGRKv336LQm8zmGGU40If29BBAwIu8x_t-drUC&disable-funding=credit,card"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script >
+      var totalAll = document.getElementById("totalAll");
+      var fee = totalAll.getAttribute("fee");
+      fee = fee / 10000;
+      fee = parseInt(fee);
       paypal.Buttons({
         style:{
             color:"blue",
@@ -125,7 +118,7 @@
         return actions.order.create({
             purchase_units : [{
                 amount: {
-                    value: '0.1'
+                    value: fee
                 }
             }]
         });

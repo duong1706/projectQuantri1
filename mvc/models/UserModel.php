@@ -1,6 +1,6 @@
 <?php 
  class User extends BaseModel {
-    const TABLE = "user";
+    const TABLE = "users";
     //Bat dau tu day
     // public function getAll($select, $orderBy){
     //     $pet = $this->all(self::TABLE, $select, $orderBy);

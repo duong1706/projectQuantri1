@@ -6,6 +6,8 @@
 
   <script src="https://kit.fontawesome.com/c52c16b666.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Passero+One&display=swap" rel="stylesheet">
@@ -111,7 +113,7 @@
             <h2 class="price"><?php echo '$' . $data['pet']['price']; ?></h2>
             <hr>
             <div class="addcart">
-               <button id="add" ><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>"><i class="fas fa-shopping-basket"></i></a></button>
+               <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1" ><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
                 </div>
@@ -331,11 +333,15 @@
   </div>
   </div>
 
+  <div id="show_cart">
   <?php 
         require_once "./mvc/views/payment/cart.php"
     ?>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+
+  <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
     $(document).on('ready', function() {
@@ -352,28 +358,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>  
-<script >
-  const menuIcon = document.querySelector('.cart__icon');
-  const cart_payment = document.querySelector('.cart__payment');
-
-menuIcon.addEventListener('click',function(){
-        cart_payment.classList.add("cart__showed");
-        cart_payment.classList.remove("cart__hidden");
-        menuIcon.style.display="none";
-       
-})
-const cart__burger = document.querySelector('.cart__burger');
-
-cart__burger.addEventListener('click',function(){
-  cart_payment.classList.add("cart__hidden");
-  cart_payment.classList.remove("cart__showed");
-
-        menuIcon.style.display="block";
-})
-</script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-   
+
+    
 </body>
 </html>

@@ -11,7 +11,7 @@ text grey        #8390A2    */
     font-family:'Poppins',sans-serif;
 }
 a{
-    color: #DD2F6E !important;
+    /* color: #DD2F6E !important; */
 }
 .sidebar{
     width: 345px;

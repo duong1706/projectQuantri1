@@ -18,6 +18,7 @@ cart_payment.classList.remove("cart__showed");
 $('a.add1').click(function(event){
     event.preventDefault();
     var href = $(this).attr('href');
+    console.log(href);
     $.ajax({
         url: href,
         type: 'POST',
@@ -38,10 +39,10 @@ $('a.removeCart').click(function(event){
     var lct = $(this).attr("lct");
     var link = '';
     if(lct === 0){
-        link = 'http://localhost:8080/projectQuanTri1 ';
+        link = 'http://localhost/projectQuanTri1 ';
     }
     else if(lct === 1){
-        link = 'http://localhost:8080/projectQuanTri1/pet/detail/' + id + ' ';
+        link = 'http://localhost/projectQuanTri1/pet/detail/' + id + ' ';
     }
     
     $.ajax({
@@ -61,7 +62,7 @@ $('input.change').blur(function(event){
     var cart__content = "#cart__content" + id;
     var value = $(this).val();
     var totalPet = '#totalPet' + id;
-    var href = "http://localhost:8080/projectQuanTri1/pet/updatecart/" + id;
+    var href = "http://localhost/projectQuanTri1/pet/updatecart/" + id;
     
    
     var link = './mvc/views/payment/cart.php ';

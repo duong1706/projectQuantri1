@@ -5,7 +5,7 @@
             // $this->productModel = new ProductModel();
         }
         function index(){
-            $data['main'] = 'blank';
+            $data['main'] = 'card/card';
             //$data['product'] = $this->productModel->getAll([], []);
             $this->view('dashboard/index', $data);
         }

@@ -29,22 +29,24 @@
             <ul>
                 <li> 
                     <div id="bar1">
-                    <a href="#" class="active"><span class="las la-igloo"></span>
+                    <a href="<?php echo URL . 'dashboard'; ?>" class="active"><span class="las la-igloo"></span>
                         <span>Dashboard</span></a>
                     </div>
                 </li>
                 <li> 
-                    <div id="bar">
-                    <a href="#" onclick="myFunction()"><span class="las la-users"></span>
-                        <span >Customers</span></a>
+                    <div id="bar1">
+                    <a href="#" class="active"><span class="las la-igloo"></span>
+                        <span>Customers</span></a>
                     </div>
                 </li>
+                
                 <li> 
-                    <div id="barr">
-                    <a href="<?php echo URL . 'pet'; ?>"><span class="las la-clipboard-list"></span>
-                        <span>Pet</span></a>
+                    <div id="bar1">
+                    <a  href="<?php echo URL . 'pet'; ?>" class="active"><span class="las la-igloo"></span>
+                        <span>Pets</span></a>
                     </div>
                 </li>
+
                
             </ul>
         </div>
@@ -72,45 +74,7 @@
             </div>
         </header>
         <main>
-            <div class="cards">
-                
-                <div class="card-single">
-                    <div>
-                        <h1>54</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>79</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="las la-clipboard-list"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>124</h1>
-                        <span>Oders</span>
-                    </div>
-                    <div>
-                        <span class="las la-shopping-bag"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>$6K</h1>
-                        <span>Income</span>
-                    </div>
-                    <div>
-                        <span class="lab la-google-wallet"></span>
-                    </div>
-                </div>
-            </div>
+           
             <?php
             
                 require_once($data['main'] . '.php'); 

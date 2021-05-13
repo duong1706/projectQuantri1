@@ -8,10 +8,10 @@
         function index(){
             $data['main'] = 'pet/list';
             $data['pet'] = $this->petModel->getAll([], []);
-            
             $this->view('dashboard/index', $data);
         }
         function detail($id){
+            $_SESSION['lct'] = 1;
             //unset($_SESSION['cart']); die();
             $data['pet'] = $this->petModel->getPet($id);
             if(isset($_SESSION["cart"])){
@@ -21,6 +21,8 @@
             else{
                 $data['cart'] =[];
             }
+            $data['lct'] = $_SESSION['lct'];
+            //print_r($data['cart']); die();
             $this->view('detail/index', $data);
         }
         function delete($id){
@@ -99,15 +101,34 @@
                 $pet['count'] = $_SESSION['cart'][$id]['count'] + 1;
             }
             $_SESSION['cart'][$id] = $pet;
-            $this->detail($id);
-            //header("location:" . URL . 'cart');
+            //$this->detail($id);
+            if($_SESSION['lct'] == 1){
+                header("location:" . URL . 'pet/detail/' . $id);
+            }
+            //print_r($data['cart']); die();
+            else if($_SESSION['lct'] == 0){
+                ///$this->view('home/index', $data);
+                //print_r($data); die();
+                header("location:" . URL);
+            }
+
         }
         function deletecart($id){
             unset($_SESSION['cart'][$id]);
-            $this->detail($id);
+            if($_SESSION['lct'] == 1){
+                header("location:" . URL . 'pet/detail/' . $id);
+            }
+            else if($_SESSION['lct'] == 0){
+                header("location:" . URL);
+            }
+        }
+        function updatecart($id){
+            $value = $_POST['value'];
+            $_SESSION['cart'][$id]['count'] = $value;
         }
         function payment(){
-            $this->view('payment/payment', []);
+            $data['cart'] = $_SESSION['cart'];
+            $this->view('payment/payment', $data);
         }
     }
 ?>

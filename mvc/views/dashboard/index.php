@@ -35,7 +35,7 @@
                 </li>
                 <li> 
                     <div id="bar1">
-                    <a href="#" class="active"><span class="las la-igloo"></span>
+                    <a  href="<?php echo URL . 'user'; ?>" class="active"><span class="las la-igloo"></span>
                         <span>Customers</span></a>
                     </div>
                 </li>

@@ -68,7 +68,7 @@
                 
                     <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
                     <a class="dropdown-item" href="<?php echo URL . 'dashboard'; ?>">Admin</a>
-                    <a class="dropdown-item" href="#">Log out</a>
+                    <a class="dropdown-item" href="<?php echo URL . 'LoginAndRegister'; ?>">Log In</a>
                     
                     </div>
                 </div>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?php echo URL . 'public/style/css/dashboard.css'; ?>">
     <style>
         .trong{
-            color: #fff;
+            color: #000;
             border: none;
             background: transparent !important;
         }

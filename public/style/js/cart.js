@@ -18,6 +18,7 @@ cart_payment.classList.remove("cart__showed");
 $('a.add1').click(function(event){
     event.preventDefault();
     var href = $(this).attr('href');
+    console.log(href);
     $.ajax({
         url: href,
         type: 'POST',

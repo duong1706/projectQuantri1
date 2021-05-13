@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/home.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
 
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
@@ -85,28 +86,28 @@
               <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2015/08/blog-img-1.jpg" alt="">
             </div>
             <div class="content">
-              <h5>06 Aug, 2015</h5>
+              <h5>06 Aug, 2021</h5>
               <a href="#">Could It</a>
               <h5>By: Admin</h5>
             </div>
           </div>
           <div class="col-md-4 blog_admin">
             <div class="img">
-              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2015/08/blog-img-1.jpg" alt="">
+              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2015/08/blog-img-2.jpg" alt="">
             </div>
             <div class="content">
-              <h5>06 Aug, 2015</h5>
-              <a href="#">Could It</a>
+              <h5>16 Aug, 2032</h5>
+              <a href="#">A Doggie</a>
               <h5>By: Admin</h5>
             </div>
           </div>
           <div class="col-md-4 blog_admin">
             <div class="img">
-              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2015/08/blog-img-1.jpg" alt="">
+              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2015/08/blog-img-3.jpg" alt="">
             </div>
             <div class="content">
-              <h5>06 Aug, 2015</h5>
-              <a href="#">Could It</a>
+              <h5>26 Aug, 2021</h5>
+              <a href="#">A Dog</a>
               <h5>By: Admin</h5>
             </div>
           </div>
@@ -179,19 +180,7 @@
                 </div>
               
               
-                <div class="action"  ><img class="hoveri" src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
-                  <div class="addcart">
-                  <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $value['idPet']; ?>" class="add1"><i class="fas fa-shopping-basket"></i></a></button>
-                    <button id="wishlist"><i class="far fa-heart" aria-hidden="true"></i></button>
-                    <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>"><button id="reset"><i class="fas fa-eye" aria-hidden="true"></i></i></button></a>
-                    </div>
-                  <div class="productp">
-                    <a class="style" href="#"><?php echo $value['name']; ?></a>
-                  </div>
-                  <div class="price">
-                  <p><?php echo $value['price']; ?></p>
-                  </div>
-                </div>
+               
                
             </div>
             <?php } ?>
@@ -230,18 +219,23 @@
           </div>
           <div class="col-md-6 blog_admin">
             <div class="img">
-              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_contentslider1.png" alt="">
+              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_contentslider2.png" alt="">
             </div>
             <div class="content">
-              <h1>TRAINING</h1>
-              <h3>SAVE $15 Puppy Or Beginner Training Course</h3>
-              <p>Enroll in a 6-week course to teach your dog basic manners & simple cues.</p>
+              <h1>Pet Camp</h1>
+              <h3>Camp Is In Session!</h3>
+              <p>Bring your pup in to let off some steam & meet new friends!</p>
               <a href="#">Learn more ></a>
             </div>
           </div>
         </div>
       </div>
 
+      </div>
+      <div class="ok">
+          <?php
+            require_once './mvc/views/hf/footer.php';
+          ?>
       </div>
       <div id="show_cart">
         <?php 

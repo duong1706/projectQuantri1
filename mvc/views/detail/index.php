@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL .'public/style/css/detail.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/header.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick-theme.css'; ?>">
   <style type="text/css">
@@ -47,6 +48,11 @@
 <body>
     <div class="detail__pet">
   <div id="product">
+    <div class="ok">
+      <?php
+        require_once './mvc/views/hf/header.php';
+      ?>
+    </div>
     <div class="ok">
       <div class="name">
           <ul>
@@ -210,7 +216,7 @@
       <a href=""><img src="<?php echo URL . 'public/style/images/cho3.jpg'; ?>" alt=""></a>
       </div>
       <div>
-      <a href=""><img src="<?php echo URL . 'public/style/images/cho4.jpg'; ?>" alt=""></a>
+      <a href=""><img src="<?php echo URL . 'public/style/images/x30.jpg'; ?>" alt=""></a>
       </div>
       <div>
       <a href=""><img src="<?php echo URL . 'public/style/images/chuot.jpg'; ?>" alt=""></a>
@@ -244,11 +250,7 @@
         </div>
     </div>
 
-    <div>
-          <?php
-            require_once './mvc/views/hf/footer.php';
-          ?>
-      </div>
+   
   </div>
   </div>
 
@@ -257,7 +259,11 @@
         require_once "./mvc/views/payment/cart.php"
     ?>
   </div>
-
+  <div>
+          <?php
+            require_once './mvc/views/hf/footer.php';
+          ?>
+      </div>
 
   <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>

@@ -19,7 +19,7 @@
         
     </p>   <p>
         <label>Password</label>
-        <input class="w3-input" type="text" name="matkhau">
+        <input class="w3-input" type="password" name="matkhau">
         
     </p>  
     <p>
@@ -29,11 +29,17 @@
     </p>
     
     <div class="card-header">
-        <span></span>
+        <span>  <?php 
+      if(isset($data['dialog']))
+      {
+          echo $data['dialog'];
+      }
+      ?></span>
         <button><input class="trong" type="submit" value="Insert" name="addUser"></button>
     </div>
    
       </form>
+    
     </div>
   </div>
 

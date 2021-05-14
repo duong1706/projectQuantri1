@@ -24,12 +24,10 @@
                             <?php foreach ($data['user'] as $key => $value) { ?>
                                     <tr role="row" class="odd">
                                         <td><?php echo $value['name']; ?></td>
-         
                                         <td><?php echo $value['username']; ?></td>
                                         <td><?php echo $value['gmail']; ?></td>
-                                       
-                                        <td><a href="<?php echo URL . "pet/edit/${value['idPet']}"; ?>">Edit</a></td>
-                                        <td><a href="<?php echo URL . "pet/delete/${value['idPet']}"; ?>">Delete</a></td>
+                                        <td><a href="<?php echo URL . "user/edit/${value['id']}"; ?>">Edit</a></td>
+                                        <td><a href="<?php echo URL . "user/delete/${value['id']}"; ?>">Delete</a></td>
                                     </tr>
                                     <?php } ?>
                             </tbody>

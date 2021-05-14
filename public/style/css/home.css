@@ -32,64 +32,7 @@ width: 70%;
 margin: 0 auto;
 background: #fff;
 }
-.navbar_home{
-  width: 100% !important;
-  justify-content: space-between !important;
-  background: #fff;
-}
-.search, .user{
-  display: flex;
-}
-.btn_user{
-  box-shadow: none !important;
-  margin-left: 1em;
-}
-.inputt{
-width:400px !important;
-}
-@media only screen and (max-width: 1465px) {
-.inputt{
- width:300px !important;
-}
-}
-@media only screen and (max-width: 1325px) {
-.inputt{
-  width:250px !important;
-}
-}
-@media only screen and (max-width: 1250px) {
-.inputt{
-  width:150px !important;
-}
-}
-@media only screen and (max-width: 1105px) {
 
-.dropdownn{
-width:115px !important;
-
-}
-.dropdownn a {
-font-size: 12px;
-}
-.inputt{
-width:136px !important;
-font-size: 12px;
-}
-.showw{
-width: 80px;
-}
-.showw a {
-font-size: 12px;
-}
-}
-
-.category_btn{
-border: 1px solid #ced4da;
-}
-.mycart:hover{
- background: #4bb048;
- color: #fff;
-}
 .blog{
 margin-top: 0.5em;
 padding: 1em;

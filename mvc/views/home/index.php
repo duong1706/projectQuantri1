@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/home.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/header.css'; ?>">
 
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
@@ -25,60 +26,9 @@
   </head>
   <body>
       <div class="home">
-        <nav class="navbar navbar-expand-lg ok">
-          <nav class="navbar">
-              <a class="navbar-brand" href="#">
-              <img src="<?php echo URL . 'public/style/images/logo.png'; ?>"  alt="">
-              </a>
-          </nav>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-       </button>
-  
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto navbar_home">
-              <div class="search">
-                <li class="nav-item dropdown dropdownn">
-                  <a class="nav-link dropdown-toggle cssdropdown category_btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Select a category
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-              </li>
-              <li class="nav-item">
-                  <form class="form-inline my-2 my-lg-0">
-                      <input  class="form-control mr-sm-2 formsearch inputt" type="search"  placeholder="What do you need..." aria-label="Search">
-                      <div>
-                      <i class="fa fa-search iconsearch"></i>
-                      </div>
-                  </form>
-                  
-              </li>
-              </div>
-              <div class="user">
-                
-              <li class="nav-item">
-                <div class="dropdown show ">
-                    <a  class="btn btn_user" href="#" role="button" id="dropdownUserLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                      <i class="far fa-user"></i>
-                    </a>
-                
-                    <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
-                    <a class="dropdown-item" href="<?php echo URL . 'dashboard'; ?>">Admin</a>
-                    <a class="dropdown-item" href="<?php echo URL . 'LoginAndRegister'; ?>">Log In</a>
-                    
-                    </div>
-                </div>
-              </li>
-              </div>
-              
-            </ul>
-        </div>
-      </nav>
+      <?php
+        require_once './mvc/views/hf/header.php';
+      ?>
       <div class="blog ok">
         <div class="row">
           <div class="col-md-4 blog_admin">
@@ -232,7 +182,7 @@
       </div>
 
       </div>
-      <div class="ok">
+      <div>
           <?php
             require_once './mvc/views/hf/footer.php';
           ?>

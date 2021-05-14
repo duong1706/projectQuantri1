@@ -24,11 +24,11 @@
         <div class="user signinBox">
           <div class="imgBox"><img src="<?php echo URL . 'public/style/images/bgformauth.jpg'; ?>" /></div>
           <div class="formBox">
-            <form>
+            <form method="post" action="user/login">
               <h2>Login</h2>
-              <input type="text" name="" placeholder="Username" />
-              <input type="text" name="" placeholder="Password" />
-              <input type="submit" value="Login" />
+              <input type="text" name="username" placeholder="Username" />
+              <input type="password" name="matkhau" placeholder="Password" />
+              <input type="submit" value="Login" name="login"/>
               <p class="signup">
                 Don't have a account ?
                 <a onclick="handleClickAuth()">sign up</a>
@@ -38,14 +38,14 @@
         </div>
         <div class="user signupBox">
           <div class="formBox">
-            <form>
+            <form  method="post" action="user/register">
               <h2>Create An Account</h2>
-              <input type="text" name="" placeholder="Username" />
-              <input type="text" name="" placeholder="name" />
-              <input type="email" name="" placeholder="Email" />
-              <input type="password" name="" placeholder="Password" />
-              <input type="password" name="" placeholder="Retype Password" />
-              <input type="submit" value="Register" />
+              <input type="text" name="username" placeholder="Username" />
+              <input type="text" name="name" placeholder="name" />
+              <input type="email" name="gmail" placeholder="Email" />
+              <input type="password" name="password" placeholder="Password" />
+              <input type="password" name="again" placeholder="Retype Password" />
+              <input type="submit" value="Register" name="register"/>
               <p class="signup">
                 Already have a account ?
                 <a onclick="handleClickAuth()">sign in</a>

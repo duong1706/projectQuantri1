@@ -55,7 +55,7 @@
             // }
 
             $sql = "INSERT INTO ${table} (${keyList}) VALUES (${values})";
-            //echo $sql;die();
+           
             $query = $this->execute($sql);
         }
         

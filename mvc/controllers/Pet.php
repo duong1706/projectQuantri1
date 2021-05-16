@@ -61,7 +61,7 @@
                     
                     $tmp_name = $_FILES['img1']['tmp_name'];
                     $anh = $_FILES['img1']['name'];
-                    $path = "./public/images/" . $anh;
+                    $path = "./public/style/images/" . $anh;
 
                     move_uploaded_file($tmp_name, $path);
                         $pet = [

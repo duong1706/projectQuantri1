@@ -10,9 +10,7 @@ text grey        #8390A2    */
     text-decoration: none;
     font-family:'Poppins',sans-serif;
 }
-a{
-    /* color: #DD2F6E !important; */
-}
+
 .sidebar{
     width: 345px;
     position: fixed;

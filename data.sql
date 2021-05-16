@@ -1,5 +1,5 @@
 create table `users` (
-    `id`  primary key not null,
+    `id` int primary key not null,
     `username` varchar(255) not null,
     `name` varchar(255) not null,
     `matkhau` varchar(255) not null,

@@ -122,7 +122,7 @@
                     <a href="<?php echo URL . "pet/detail/${value['idPet']}"; ?>"><button id="reset"><i class="fas fa-eye" aria-hidden="true"></i></button></a>
                     </div>
                   <div class="productp">
-                  <a class="style" href="#"><?php echo $value['name']; ?></a>
+                  <h3 class="style" href="#"><?php echo $value['name']; ?></h3>
                   </div>
                   <div class="price">
                   <p><?php echo $value['price']; ?></p>
@@ -144,11 +144,12 @@
             <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_image4.jpg" alt="code">
           </div>
           <div class="col-md-4">
-            <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_image5.jpg" alt="code">
-          </div>
-          <div class="col-md-4">
             <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_image6.jpg" alt="code">
           </div>
+          <div class="col-md-4">
+            <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/11/home1_image5.jpg" alt="code">
+          </div>
+          
         </div>
       </div>
       <div class="service ok">

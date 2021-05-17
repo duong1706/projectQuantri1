@@ -1,9 +1,12 @@
 <?php 
 class User extends Controller {
     private $userModel;
+    private $petModel;
     function __construct(){
         $this->model('UserModel');
         $this->userModel = new UserModel();
+        $this->model('PetModel');
+        $this->petModel = new PetModel();
     }
     function index(){
         $data['main'] = 'user/list';
@@ -66,6 +69,7 @@ class User extends Controller {
     }
 
     function login(){
+        
         if(isset($_POST["login"])){
         function validate($data){
             $data = trim($data);
@@ -87,18 +91,27 @@ class User extends Controller {
         $flag =  $this->userModel->Login($username, $password);
          if($flag)
          {
-            
-            $data['flag'] = $flag;
-            // $this->view('home/index', $data);
-            // goi trang home xu? ly lay data pet cac kieu
-            // flag dung de xet layout dong. cho login menu
+            $_SESSION['flag'] = $flag;
+            $_SESSION['user'] = $username;
+            if(isset($_SESSION['admin'])){
+                unset($_SESSION['admin']);
+                Header("Location:" . URL . 'dashboard');
+            }
+            else {
+                Header("Location:" . URL);
+            }
          }
          else 
          {  
              // goi lai trang login hien dong thong bao that bai
-             echo "false";
+             echo "false"; die();
          }
         }
+    }
+
+    public function logout(){
+        unset($_SESSION['user']);
+        header("location:" . URL);
     }
 
     public function register() {
@@ -162,6 +175,7 @@ class User extends Controller {
            
         }
     }
+   
 
     
 }

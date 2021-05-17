@@ -23,7 +23,7 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"> <span>Pet</span> </span></h2>
+            <a href="<?php echo URL; ?>"><h2><span class="lab la-accusoft"> <span>Pet</span> </span></h2></a>
         </div>
         <div class="sidebar-menu">
             <ul>

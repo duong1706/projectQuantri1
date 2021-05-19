@@ -1,7 +1,9 @@
+
+
 <nav class="navbar navbar-expand-lg ok">
           <nav class="navbar">
-              <a class="navbar-brand" href="#">
-              <img src="<?php echo URL . 'public/style/images/logo.png'; ?>"  alt="">
+              <a class="navbar-brand" href="<?php echo URL; ?>">
+              <img src="http://demo1.wpopal.com/bestfriend/wp-content/uploads/2016/12/logo.png"  alt="logo">
               </a>
           </nav>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,13 +37,36 @@
               <li class="nav-item">
                 <div class="dropdown show ">
                     <a  class="btn btn_user" href="#" role="button" id="dropdownUserLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                      <span>
+                        <?php
+                          if(isset($_SESSION['user'])){
+                            echo $_SESSION['user'];
+                          }
+                        ?>
+                      </span>
                       <i class="far fa-user"></i>
                     </a>
                 
                     <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
                     <a class="dropdown-item" href="<?php echo URL . 'dashboard'; ?>">Admin</a>
-                    <a class="dropdown-item" href="<?php echo URL . 'LoginAndRegister'; ?>">Log In</a>
-                    
+                    <a class="dropdown-item log" href="<?php 
+                                                      if(isset($_SESSION['user'])){
+                                                        echo URL . 'user/logout';
+                                                      }
+                                                      else{
+                                                        echo URL . 'LoginAndRegister'; 
+                                                      }
+                                                    ?>">
+                                                      <?php
+                                                        if(isset($_SESSION['user'])){
+                                                          echo "Log Out";
+                                                        }
+                                                        else{
+                                                          echo "Log In";
+                                                        }
+                                                      ?>
+                                                    </a>
+                                                  
                     </div>
                 </div>
               </li>

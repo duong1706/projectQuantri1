@@ -48,7 +48,7 @@
 <body>
     <div class="detail__pet">
   <div id="product">
-    <div class="ok">
+    <div class="ok" id="header1">
       <?php
         require_once './mvc/views/hf/header.php';
       ?>

@@ -7,10 +7,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: #F7F7F7;
 }
 
 .detail__pet{
-    background: #F7F7F7;
     line-height: 1.71429;
     width: 80%;
     margin: 0 auto;

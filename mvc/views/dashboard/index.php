@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="<?php echo URL . 'public/style/css/dashboard.css'; ?>">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <style>
         .trong{
             color: #000;
@@ -62,7 +66,7 @@
             </h2>
             <div class="search-wrapper">
                 <span class="las la-search">
-                    <input type="search" placeholder="search here">
+                    <input class="search" type="search" placeholder="search here">
                 </span>
             </div>
             <div class="user-wrapper">
@@ -88,6 +92,7 @@
     </div>
     
   
+<script src="<?php echo URL . 'public/style/js/dashboard.js'; ?>" type="text/javascript" charset="utf-8"></script>
  
 
 </body>

@@ -22,8 +22,8 @@
                             </thead>
                             <tbody>
                             <?php foreach ($data['user'] as $key => $value) { ?>
-                                    <tr role="row" class="odd">
-                                        <td><?php echo $value['name']; ?></td>
+                                    <tr role="row" class="odd" id = "data-<?php echo $value['id']; ?>">
+                                        <td class="name" data-id="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></td>
                                         <td><?php echo $value['username']; ?></td>
                                         <td><?php echo $value['gmail']; ?></td>
                                         <td><a href="<?php echo URL . "user/edit/${value['id']}"; ?>">Edit</a></td>

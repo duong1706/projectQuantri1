@@ -25,8 +25,8 @@
                             </thead>
                             <tbody>
                             <?php foreach ($data['pet'] as $key => $value) { ?>
-                                    <tr role="row" class="odd">
-                                        <td><?php echo $value['name']; ?></td>
+                                    <tr role="row" class="odd" id = "data-<?php echo $value['idPet']; ?>">
+                                        <td class="name" data-id="<?php echo $value['idPet']; ?>"><?php echo $value['name']; ?></td>
                                         <td class="img12"><img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="<?php echo $value['image']; ?>"></td>
                                         <td><?php echo $value['content']; ?></td>
                                         <td><?php echo $value['color']; ?></td>

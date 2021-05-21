@@ -31,9 +31,13 @@
                   </form>
                   
               </li>
+              
               </div>
               <div class="user">
-                
+              <div class="cart">
+                <span id="numcart">1</span>
+                <i class="fas fa-shopping-cart"></i>
+              </div>
               <li class="nav-item">
                 <div class="dropdown show ">
                     <a  class="btn btn_user" href="#" role="button" id="dropdownUserLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">

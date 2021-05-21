@@ -56,3 +56,21 @@
    background: #4bb048;
    color: #fff;
   }
+.cart{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#numcart{
+  position: absolute;
+  top: 0px;
+  left: 17px;
+  font-size: 10px;
+  border-radius: 100%;
+  background: #7fad39;
+  text-align: center;
+  height: 13px;
+  width: 13px;
+  color: #fff;
+}

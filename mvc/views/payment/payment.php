@@ -45,6 +45,7 @@
                             echo '$' . number_format($value['price'] * $value['count']); 
                             $tong += ($value['price'] * $value['count']);
                           ?></p>
+                          <span><?php echo $value['count']; ?></span>
                         </div>
                         <div class="col-md-2 number">
                           <div class="delete">
@@ -53,9 +54,7 @@
                           </div>
                           
                           
-                          <form action="">
-                            <input type="text" value = <?php echo $value['count']; ?>> 
-                          </form>
+                         
                         </div>
                       </div>
                     </div>

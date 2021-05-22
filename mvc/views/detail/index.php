@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL .'public/style/css/detail.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
-  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/header.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick-theme.css'; ?>">
   <style type="text/css">
@@ -48,19 +48,13 @@
 <body>
     <div class="detail__pet">
   <div id="product">
-    <div class="ok" id="header1">
-      <?php
-        require_once './mvc/views/hf/header.php';
-      ?>
-    </div>
+    
     <div class="ok">
       <div class="name">
           <ul>
               <li><a href="<?php echo URL; ?>">Home</a></li>
               <li><i class="fas fa-angle-double-right"></i></li>
-              <li><a href="#">Dental Care</a></li>
-              <li><i class="fas fa-angle-double-right"></i></li>
-              <li><p>Product Test Ewok Pet</p></li>
+              <li><p><?php echo $data['pet']['name']; ?></p></li>
           </ul>
       </div>
       <div class="row">
@@ -123,7 +117,9 @@
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
                 </div>
-            <p class="des1"><?php echo $data['pet']['content']; ?></p>
+            <p class="des1"><?php echo $data['pet']['content'] . " One Piece (ワンピース Wan Pīsu?), từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro, được đăng định kì trên tạp chí Weekly Shōnen Jump, ra mắt lần đầu trên ấn bản số 34 vào ngày 19 tháng 7 năm 1997. Bản tankōbon của truyện do Shueisha phát hành với tập đầu tiên vào ngày 24 tháng 12 năm 1997. One Piece kể về cuộc hành trình của Monkey D. Luffy - thuyền trưởng của băng hải tặc Mũ Rơm và các đồng đội của cậu. Luffy tìm kiếm vùng biển bí ẩn nơi cất giữ kho báu lớn nhất thế giới One Piece, với mục tiêu trở thành Tân Vua Hải Tặc.
+
+One Piece cũng được chuyển thể sang một vài loại hình truyền thông khác nhau. Một OVA được hãng Production I.G sản xuất vào năm 1998. Tiếp đó, phiên bản anime dài tập do hãng Toei Animation thực hiện, bắt đầu lên sóng truyền hình Nhật Bản vào năm 1999. Toei cũng sản xuất 11 phim hoạt hình, một OVA và 5 chương trình truyền hình đặc biệt liên quan. Một vài công ty đã phát triển nhiều sản phẩm khác dựa vào truyện như thẻ game, video game. Bộ manga phiên bản tiếng Anh được cấp phép cho hãng Viz Media phát hành ở thị trường Bắc Mỹ, hãng Gollancz Manga ở Anh Quốc, Madman Entertainment ở Australia và New Zealand. Ở Bắc Mỹ, bộ anime được cấp phép bản địa hóa và phân phối bằng tiếng Anh bởi hãng Funimation Entertainment."; ?></p>
           </div>
             
         </div>
@@ -148,55 +144,56 @@
               In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
       </div>
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <div class="row">
-          <div class="col-md-5 rate">
-            <h1>CUSTOMERS REVIEW</h1>
-        </div>
-        <div class="col-md-7 comment">
-            <h1>RATE IT!</h1>
-        </div>
-        </div>
-        <div class="rate">
-          <h4>1 REVIEW FOR PRODUCT TEST EWOK PET</h4>
-          <div class="row">
-            <div class="col-md-2">
-              <img src="../public/style/images/avt.jpg" alt="">
-              <h5>Admin</h5>
+      <div class="comment">
+          <div class="avt">
+            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="">
+          </div>
+          <div class="content">
+            <div class="user">
+              <h1>Huy</h1>
             </div>
-            <div class="col-md-10">
-              <p id="date">May 13, 2016</p>
-              <div class="review">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p>Good and nice</p>
+            <div class="content_cmt">
+              <p>Sanr phẩm này thật tuyệt vời</p>
             </div>
           </div>
+
         </div>
-        <div class="cmt">
-          <h5>Add a review</h5>
-          <p>Your email address will not be published. Required fields are marked *</p>
-          <p>Your Rating</p>
-          <div class="review">
-            <a href=""><i class="fas fa-star"></i></a>
-            <a href=""><i class="fas fa-star"></i></a>
-            <a href=""><i class="fas fa-star"></i></a>
-            <a href=""><i class="fas fa-star"></i></a>
-            <a href=""><i class="fas fa-star"></i></a>
+        <div class="comment">
+          <div class="avt">
+            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="">
           </div>
-          <form action="">
-            <label for="">Your Review</label><br>
-            <input type="text"><br>
-            <label for="">Name *</label><br>
-            <input type="text"><br>
-            <label for="">Email *</label><br>
-            <input type="email"><br>
-            <input type="submit" value="Submit">
-          </form>
+          <div class="content">
+            <div class="user">
+              <h1>Huy</h1>
+            </div>
+            <div class="content_cmt">
+              <p>Sanr phẩm này thật tuyệt vời</p>
+            </div>
+          </div>
+
         </div>
+        <div class="comment">
+          <div class="avt">
+            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="">
+          </div>
+          <div class="content">
+            <div class="user">
+              <h1>Huy</h1>
+            </div>
+            <div class="content_cmt">
+              <p>Sanr phẩm này thật tuyệt vời</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="yourcmt">
+          <div class="avt">
+            <img src="<?php echo URL . 'public/style/images/cho1.jpg'; ?>" alt="">
+          </div>
+          <input type="text" placeholder="type somethings">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+        
       </div>
     </div>
   </div>

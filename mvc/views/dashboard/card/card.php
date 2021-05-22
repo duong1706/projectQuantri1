@@ -2,7 +2,7 @@
                 
                 <div class="card-single">
                     <div>
-                        <h1>54</h1>
+                        <h1><?php echo count($data['user']); ?></h1>
                         <span>Customers</span>
                     </div>
                     <div>
@@ -11,8 +11,8 @@
                 </div>
                 <div class="card-single">
                     <div>
-                        <h1>79</h1>
-                        <span>Projects</span>
+                        <h1><?php echo count($data['pet']); ?></h1>
+                        <span>Pets</span>
                     </div>
                     <div>
                         <span class="las la-clipboard-list"></span>

@@ -240,3 +240,42 @@ body {
     margin-left: -50px;
     color: #4bb048
 }
+.comment{
+    display: flex;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: rgb(241, 255, 190);
+    margin-bottom: 2em;
+}
+.avt{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 2em;
+}
+.comment h1{
+    font-size: 1.5em;
+}
+.avt img{
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.yourcmt{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: rgb(49, 232, 238);
+}
+.yourcmt input{
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+.yourcmt button{
+    border: none;
+    background: transparent;
+}

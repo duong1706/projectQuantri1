@@ -130,6 +130,8 @@
             Swal.fire({
   icon: 'success',
   title: 'Thành Công',
+}).then(() => {
+  // choox guiwr mail  
 })
         })
     },

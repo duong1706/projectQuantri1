@@ -241,12 +241,12 @@ body {
     color: #4bb048
 }
 .comment{
-    display: flex;
     border: 1px solid transparent;
     border-radius: 20px;
     padding: 10px 20px;
     background: rgb(241, 255, 190);
     margin-bottom: 2em;
+    background: #3A3B3C;
 }
 .avt{
     width: 3em;
@@ -264,11 +264,10 @@ body {
     border-radius: 50%;
 }
 .yourcmt{
-    display: flex;
     justify-content: space-between;
     border-radius: 20px;
     padding: 10px 20px;
-    background: rgb(49, 232, 238);
+    background: #3A3B3C
 }
 .yourcmt input{
     border: none;

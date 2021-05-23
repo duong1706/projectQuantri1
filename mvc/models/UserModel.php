@@ -42,6 +42,14 @@
         $user = mysqli_fetch_array($result);
         return $user;
     }
+
+    public function getuserbyUsername($username){
+        $username = (string)$username;
+        $qr = "SELECT * FROM users WHERE username='${username}'";
+        $result = mysqli_query($this->connect, $qr);
+        $user = mysqli_fetch_array($result);
+        return $user;
+    }
    
     public function update($id, $user){
        

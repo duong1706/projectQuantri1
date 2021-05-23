@@ -70,9 +70,12 @@
                 </span>
             </div>
             <div class="user-wrapper">
-                <img src="https://yt3.ggpht.com/ytc/AAUvwnjDqSi1gYq6DejpqxoV07coJgzc7l6QbQMCMb_r=s900-c-k-c0x00ffffff-no-rj" width="40px" height="40px" alt="">
                 <div>
-                    <h4>john Doe</h4>
+                    <h4><?php
+                        if(isset($_SESSION['user'])){
+                            echo $_SESSION['user']['username'];
+                        }
+                    ?></h4>
                     <small>Super admin</small>
                 </div>
             </div>

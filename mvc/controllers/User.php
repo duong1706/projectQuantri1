@@ -28,14 +28,13 @@ class User extends Controller {
     function add(){
         if(isset($_POST["addUser"]))
         {
-            
             $user = [
                'name'=>$_POST['name'],
                'username'=>$_POST['username'],
                'matkhau'=>$_POST['matkhau'],
                'gmail'=>$_POST['gmail']       
             ];
-        $dialog =    $this->userModel->add($user);
+        $dialog = $this->userModel->add($user);
         $data['main'] = 'user/add';
         $data["dialog"] =  $dialog;
         $this->view('dashboard/index', $data);
@@ -69,7 +68,6 @@ class User extends Controller {
     }
 
     function login(){
-        
         if(isset($_POST["login"])){
         function validate($data){
             $data = trim($data);
@@ -77,34 +75,41 @@ class User extends Controller {
             $data = htmlspecialchars($data);
             return $data;
          }
-     
          $username = validate($_POST['username']);
          $password = validate($_POST['matkhau']);
-     
+         
          if (empty($username)) {
-            echo "UserName is required";
-             exit();
+            $_SESSION['error'] = "Username  is required";
+            Header("Location:" . URL . 'LoginAndRegister');
+            exit();
          }else if(empty($password)){
-            echo "password  is required";
-             exit();
+            $_SESSION['error'] = "Password  is required";
+            Header("Location:" . URL . 'LoginAndRegister');
+            exit();
          }
         $flag =  $this->userModel->Login($username, $password);
          if($flag)
          {
+            unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
-            $_SESSION['user'] = $username;
+            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
             if(isset($_SESSION['admin'])){
                 unset($_SESSION['admin']);
                 Header("Location:" . URL . 'dashboard');
+            }
+            else if(isset($_SESSION['payment'])){
+                unset($_SESSION['payment']);
+                Header("Location:" . URL . 'pet/payment');
             }
             else {
                 Header("Location:" . URL);
             }
          }
+         
          else 
          {  
-             // goi lai trang login hien dong thong bao that bai
-             echo "false"; die();
+            $_SESSION['error'] = "Username or Password  is incorrect";
+            Header("Location:" . URL . 'LoginAndRegister');
          }
         }
     }

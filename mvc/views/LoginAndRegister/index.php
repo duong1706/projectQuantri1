@@ -28,6 +28,13 @@
               <h2>Login</h2>
               <input type="text" name="username" placeholder="Username" />
               <input type="password" name="matkhau" placeholder="Password" />
+              <p style="margin: 0.5em; color: red;">
+                <?php
+                  if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'];
+                  }
+                ?>
+              <br>
               <input type="submit" value="Login" name="login"/>
               <p class="signup">
                 Don't have a account ?
@@ -45,6 +52,8 @@
               <input type="email" name="gmail" placeholder="Email" />
               <input type="password" name="password" placeholder="Password" />
               <input type="password" name="again" placeholder="Retype Password" />
+              
+              </p>
               <input type="submit" value="Register" name="register"/>
               <p class="signup">
                 Already have a account ?

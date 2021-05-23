@@ -44,7 +44,7 @@
                       <span>
                         <?php
                           if(isset($_SESSION['user'])){
-                            echo $_SESSION['user'];
+                            echo $_SESSION['user']['username'];
                           }
                         ?>
                       </span>

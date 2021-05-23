@@ -195,6 +195,7 @@ thead td{
     font-weight: 700;
 }
 td {
+    text-align: center;
     padding: .5rem 1rem;
     font-size: .9rem;
     color: #222;

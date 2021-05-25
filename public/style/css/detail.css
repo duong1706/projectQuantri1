@@ -246,7 +246,7 @@ body {
     padding: 10px 20px;
     background: rgb(241, 255, 190);
     margin-bottom: 2em;
-    background: #3A3B3C;
+    background: #F0F2F5;
 }
 .avt{
     width: 3em;
@@ -264,15 +264,20 @@ body {
     border-radius: 50%;
 }
 .yourcmt{
+    display: flex;
     justify-content: space-between;
     border-radius: 20px;
     padding: 10px 20px;
-    background: #3A3B3C
+    background: #F0F2F5
 }
 .yourcmt input{
     border: none;
     background: transparent;
     width: 100%;
+    color: #000;
+}
+.yourcmt input:focus-visible{
+    outline: none;
 }
 .yourcmt button{
     border: none;

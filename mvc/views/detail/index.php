@@ -172,8 +172,8 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
             <p>Sanr phẩm này thật tuyệt vời</p>
           </div>
         </div>
+        <h4>Your review</h4>
         <div class="yourcmt">
-          
           <input type="text" placeholder="type somethings">
           <button><i class="fas fa-paper-plane"></i></button>
         </div>

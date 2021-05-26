@@ -47,7 +47,7 @@
  
 </head>
 <body>
-<div id="preloader">
+    <div id="preloader">
       <div class="loader"></div>
     </div>
     <div class="detail__pet">

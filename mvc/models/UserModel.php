@@ -62,8 +62,6 @@
 
         $qr = "UPDATE users SET name='$name',gmail='$gmail',username='$username',matkhau='$matkhau' WHERE id='$id' ";
         $res = mysqli_query($this->connect,$qr);
-       
-        
     }
     public function destroy($id){
         $qr = "DELETE FROM users WHERE id='$id'";
@@ -93,7 +91,6 @@
       
         if(mysqli_num_rows($res) > 0)
         {
-            
             return false;
         }
         else 
@@ -114,6 +111,11 @@
                 return false;
             }
         }
+    }
+
+    public function changePass($id, $pass){
+        $qr = "UPDATE users SET matkhau='$pass' WHERE id='$id' ";
+        $res = mysqli_query($this->connect, $qr);
     }
  }
 ?>

@@ -24,7 +24,6 @@
   
 </head>
   <body>
-   
     <div id="preloader">
       <div class="loader"></div>
     </div>
@@ -174,6 +173,8 @@
       Subject : "Dat hang thanh cong",
       Body : "Dat hang thanh cong"
   })
+}).then(function(){
+  window.location.replace("http://localhost:8080/projectQuanTri1");
 })
         })
     },

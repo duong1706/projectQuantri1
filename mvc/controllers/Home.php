@@ -6,7 +6,10 @@
             $this->petModel = new PetModel();
         }
         function index(){
-            unset($_SESSION['payment']);
+            if(isset($_SESSION['payment'])){
+                unset($_SESSION['payment']);
+                unset($_SESSION['cart']);
+            }
             unset($_SESSION['admin']);
             unset($_SESSION['error']);
             $_SESSION['lct'] = 0;

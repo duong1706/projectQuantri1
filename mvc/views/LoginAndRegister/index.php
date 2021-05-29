@@ -28,6 +28,13 @@
               <h2>Login</h2>
               <input type="text" name="username" placeholder="Username" />
               <input type="password" name="matkhau" placeholder="Password" />
+              <p style="margin: 0.5em; color: red;">
+                <?php
+                  if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'];
+                  }
+                ?></p>
+              <br>
               <input type="submit" value="Login" name="login"/>
               <p class="signup">
                 Don't have a account ?
@@ -40,11 +47,29 @@
           <div class="formBox">
             <form  method="post" action="user/register">
               <h2>Create An Account</h2>
-              <input type="text" name="username" placeholder="Username" />
+              <div class="loan" style="display: flex; align-items: center">
+                <input type="text" name="username" placeholder="Username" />
+                <span style="margin: 0.5em; color: red; font-size: 0px;" id = "errorUN">!</span>
+              </div>
+              <div class="loan" style="display: flex; align-items: center">
               <input type="text" name="name" placeholder="name" />
+              <span style="margin: 0.5em; color: red; font-size: 0px;" id = "errorN">!</span>
+              </div>
+              <div class="loan" style="display: flex; align-items: center">
               <input type="email" name="gmail" placeholder="Email" />
+              <span style="margin: 0.5em; color: red; font-size: 0px;" id = "errorM">!</span>
+              </div>
+              <div class="loan" style="display: flex; align-items: center">
               <input type="password" name="password" placeholder="Password" />
+              <span style="margin: 0.5em; color: red; font-size: 0px;" id = "errorP">!</span>
+              </div>
+              <div class="loan" style="display: flex; align-items: center">
               <input type="password" name="again" placeholder="Retype Password" />
+              <span style="margin: 0.5em; color: red; font-size: 0px;" id = "errorRP">!</span>
+              </div>
+              
+             
+              
               <input type="submit" value="Register" name="register"/>
               <p class="signup">
                 Already have a account ?
@@ -78,7 +103,73 @@
   var element = document.getElementsByClassName("boxAuth");
 
   element[0].classList.toggle("active");
+
 }
+
+  
+
+  $("input[name=username]").blur(function() {
+    if($(this).val().trim() == ""){
+      $("input[name=register]").prop("disabled", true);
+      $("#errorUN").css("font-size", "16px");
+    }
+    else{
+      $("input[name=register]").prop("disabled", false);
+      $("#errorUN").css("font-size", "0px");
+    }
+
+  })
+
+  $("input[name=name]").blur(function() {
+    if($(this).val().trim() == ""){
+      $("input[name=register]").prop("disabled", true);
+      $("#errorN").css("font-size", "16px");
+    }
+    else{
+      $("input[name=register]").prop("disabled", false);
+      $("#errorN").css("font-size", "0px");
+    }
+
+  })
+  $("input[name=gmail]").blur(function() {
+    if($(this).val().trim() == "" || !validateEmail($(this).val().trim())){
+      $("input[name=register]").prop("disabled", true);
+      $("#errorM").css("font-size", "16px");
+    }
+    else{
+      $("input[name=register]").prop("disabled", false);
+      $("#errorM").css("font-size", "0px");
+    }
+  })
+  $("input[name=password]").blur(function() {
+    if($(this).val().trim() == ""){
+      $("input[name=register]").prop("disabled", true);
+      $("#errorP").css("font-size", "16px");
+    }
+    else{
+      $("input[name=register]").prop("disabled", false);
+      $("#errorP").css("font-size", "0px");
+    }
+
+  })
+
+  $("input[name=again]").blur(function() {
+    if($(this).val().trim() != $("input[name=password]").val().trim()) {
+      $("input[name=register]").prop("disabled", true);
+      $("#errorRP").css("font-size", "16px");
+    }
+    else{
+      $("input[name=register]").prop("disabled", false);
+      $("#errorRP").css("font-size", "0px");
+    }
+
+  })
+
+  function validateEmail(email) {
+                const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+                
+            }
     </script>
   </body>
 </html>

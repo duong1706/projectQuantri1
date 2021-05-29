@@ -44,7 +44,7 @@
                       <span>
                         <?php
                           if(isset($_SESSION['user'])){
-                            echo $_SESSION['user'];
+                            echo $_SESSION['user']['username'];
                           }
                         ?>
                       </span>
@@ -70,7 +70,11 @@
                                                         }
                                                       ?>
                                                     </a>
-                                                  
+                    <?php
+                      if(isset($_SESSION['user'])){
+                        echo "<a class='dropdown-item' href='". URL . "user/changepass'>Change Password</a>";
+                      }
+                    ?>                              
                     </div>
                 </div>
               </li>

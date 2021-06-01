@@ -174,8 +174,10 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
         </div>
         <h4>Your review</h4>
         <div class="yourcmt">
-          <input type="text" placeholder="type somethings">
-          <button><i class="fas fa-paper-plane"></i></button>
+      <form action="<?php echo URL . 'post/addpost/'; ?>" method="post"> 
+          <input type="text" placeholder="type somethings" class="content__post" name="content">
+          <button class="add_post" type="submit" ><i class="fas fa-paper-plane"></i></button>
+          </form>
         </div>
         
       </div>
@@ -248,6 +250,7 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
 
   <script src="<?php echo URL . 'public/style/js/loader.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php echo URL . 'public/style/js/post.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">

@@ -28,14 +28,13 @@ class User extends Controller {
     function add(){
         if(isset($_POST["addUser"]))
         {
-            
             $user = [
                'name'=>$_POST['name'],
                'username'=>$_POST['username'],
                'matkhau'=>$_POST['matkhau'],
                'gmail'=>$_POST['gmail']       
             ];
-        $dialog =    $this->userModel->add($user);
+        $dialog = $this->userModel->add($user);
         $data['main'] = 'user/add';
         $data["dialog"] =  $dialog;
         $this->view('dashboard/index', $data);
@@ -69,7 +68,6 @@ class User extends Controller {
     }
 
     function login(){
-        
         if(isset($_POST["login"])){
         function validate($data){
             $data = trim($data);
@@ -77,34 +75,41 @@ class User extends Controller {
             $data = htmlspecialchars($data);
             return $data;
          }
-     
          $username = validate($_POST['username']);
          $password = validate($_POST['matkhau']);
-     
+         
          if (empty($username)) {
-            echo "UserName is required";
-             exit();
+            $_SESSION['error'] = "Username  is required";
+            Header("Location:" . URL . 'LoginAndRegister');
+            exit();
          }else if(empty($password)){
-            echo "password  is required";
-             exit();
+            $_SESSION['error'] = "Password  is required";
+            Header("Location:" . URL . 'LoginAndRegister');
+            exit();
          }
         $flag =  $this->userModel->Login($username, $password);
          if($flag)
          {
+            unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
-            $_SESSION['user'] = $username;
+            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
             if(isset($_SESSION['admin'])){
                 unset($_SESSION['admin']);
                 Header("Location:" . URL . 'dashboard');
+            }
+            else if(isset($_SESSION['payment'])){
+                unset($_SESSION['payment']);
+                Header("Location:" . URL . 'pet/payment');
             }
             else {
                 Header("Location:" . URL);
             }
          }
+         
          else 
          {  
-             // goi lai trang login hien dong thong bao that bai
-             echo "false"; die();
+            $_SESSION['error'] = "Username or Password  is incorrect";
+            Header("Location:" . URL . 'LoginAndRegister');
          }
         }
     }
@@ -125,38 +130,38 @@ class User extends Controller {
             $password1 = $_POST["again"];
          
             
-            function validate($data){
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-             }
+            // function validate($data){
+            //     $data = trim($data);
+            //     $data = stripslashes($data);
+            //     $data = htmlspecialchars($data);
+            //     return $data;
+            //  }
                    
-             if (empty($name)) {
-                echo "name khong duoc de trong";
-                 exit();
-             }else if(empty($email)){
-                echo "email khong duoc de trong";
-                 exit();
-             }
-             else if(empty($username)){
-                echo "username khong duoc de trong";
-                 exit();
-             }
-             else if(empty($password)){
-                echo "password khong duoc de trong";
-                 exit();
-             }
+            //  if (empty($name)) {
+            //     echo "name khong duoc de trong";
+            //      exit();
+            //  }else if(empty($email)){
+            //     echo "email khong duoc de trong";
+            //      exit();
+            //  }
+            //  else if(empty($username)){
+            //     echo "username khong duoc de trong";
+            //      exit();
+            //  }
+            //  else if(empty($password)){
+            //     echo "password khong duoc de trong";
+            //      exit();
+            //  }
          
-             else if(empty($password1)){
-                echo "password1 khong duoc de trong";
-                 exit();
-             }
+            //  else if(empty($password1)){
+            //     echo "password1 khong duoc de trong";
+            //      exit();
+            //  }
            
-             else if($password !== $password1){
-                echo "password khong giong nhau";
-                 exit();
-             }
+            //  else if($password !== $password1){
+            //     echo "password khong giong nhau";
+            //      exit();
+            //  }
          
            $flag =  $this->userModel->InserUserModel($name,$email,$username, $password );
            if($flag)
@@ -174,6 +179,55 @@ class User extends Controller {
            }
            
         }
+    }
+
+    public function changepass() {
+        if(isset($_POST['pass'])){
+            function validate($data){
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+             }
+             $oldPassword = validate($_POST['matkhaucu']);
+             $newPassword = validate($_POST['matkhaumoi']);
+             $retypePassword = validate($_POST['matkhaulai']);
+             
+             if (empty($oldPassword)) {
+                $_SESSION['error'] = "Old Password  is required";
+                Header("Location:" . URL . 'user/changepass');
+                exit();
+             }else if(empty($newPassword)){
+                $_SESSION['error'] = "New Password  is required";
+                Header("Location:" . URL . 'user/changepass');
+                exit();
+             }
+             else if(empty($retypePassword)){
+                $_SESSION['error'] = "Retype Password  is required";
+                Header("Location:" . URL . 'user/changepass');
+                exit();
+             }
+
+             if($retypePassword != $newPassword){
+                $_SESSION['error'] = "Retype Password is incorect";
+                Header("Location:" . URL . 'user/changepass');
+                exit();
+             }
+
+             if($oldPassword == $_SESSION['user']['matkhau']){
+                 $this->userModel->changePass($_SESSION['user']['id'], $newPassword);
+                 Header("Location:" . URL);
+             }
+             else{
+                $_SESSION['error'] = "Old Password is incorect";
+                Header("Location:" . URL . 'user/changepass');
+                exit();
+            }
+        }
+        
+
+
+        $this->view('LoginAndRegister/changepassword', []);
     }
    
 

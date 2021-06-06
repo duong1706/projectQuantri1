@@ -12,10 +12,14 @@ create table `posts` (
     `id` int primary key not null,
     `name` varchar(255) not null,
     `content` varchar(255) not null,
-    `user_id` int not null,
-    foreign key (`user_id`) references `users`(`id`)
+    `pet_id` int not null,
+    foreign key (`pet_id`) references `pet`(`idPet`)
 
 );
+ALTER TABLE `posts`
+  MODIFY `ids` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+
 insert into `users` (`id`, `username`, `name`, `gender`, `created`) values (
     'b1818b2a-0196-49a8-a502-a2b3b8203080', 'chuongdlb', 'Chương Đặng', 'male', now()
 );

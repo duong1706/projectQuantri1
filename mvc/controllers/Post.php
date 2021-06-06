@@ -6,19 +6,26 @@ class Post extends Controller {
         $this->postModel = new PostModel();
     }
 
-    function addPost()
+    function addPost($id)
     {
        
+     
        //echo $_SESSION['user'];
       if(isset($_POST["content"]))
       {
-     
-        $flag = $this->postModel->add($_POST["content"],$_SESSION['user']['id'],$_SESSION['user']['name']);
+        
+        $flag = $this->postModel->add($_POST["content"],$id,$_SESSION['user']['name']);
       }
        
       
      
     }
+    // function getPosts()
+    // {
+    //  $posts = $this->postModel->get();
+    //  print_r($posts);
+    // //  $this->view('detail/index',$posts);
+    // }
 }
 
 ?>

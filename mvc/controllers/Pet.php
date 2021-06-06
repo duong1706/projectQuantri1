@@ -1,19 +1,29 @@
 <?php
     class Pet extends Controller{
         private $petModel;
+        private $postModel;
+     
+         
+       
         function __construct(){
             $this->model('PetModel');
             $this->petModel = new PetModel();
+            $this->model('PostModel');
+            $this->postModel = new PostModel();
         }
         function index(){
             $data['main'] = 'pet/list';
             $data['pet'] = $this->petModel->getAll([], []);
+         //   $data['posts'] = $this->postModel->get();
             $this->view('dashboard/index', $data);
         }
         function detail($id){
             $_SESSION['lct'] = 1;
             //unset($_SESSION['cart']); die();
             $data['pet'] = $this->petModel->getPet($id);
+            $data['posts'] = $this->postModel->get($id);
+
+            
             if(isset($_SESSION["cart"])){
                 $data['cart'] = $_SESSION["cart"];
                
@@ -89,6 +99,7 @@
             }
             $data['main'] = 'pet/edit';
             $data['pet'] = $this->petModel->getPet($id);
+           // $data['posts'] = $this->postModel->get();
             $this->view('dashboard/index', $data);
             
         }

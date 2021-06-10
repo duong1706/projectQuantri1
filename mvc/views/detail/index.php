@@ -105,7 +105,7 @@
 
         <div class="col-lg-7  col-xl-5 petprice">
           <div class="contain">
-            <h1 class="petname"><?php echo 'Pet name: ' . $data['pet']['name']; ?></h1>
+            <h1 class="petname"><?php echo 'Name: ' . $data['pet']['name']; ?></h1>
             <div class="review">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>

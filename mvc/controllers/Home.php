@@ -24,5 +24,13 @@
            // print_r($data['cart']); die();
             $this->view('home/index', $data);
         }
+
+        function cart(){
+            $data = [];
+            if(!isset($_Session["cart"])){
+                $data['cart'] = $_SESSION['cart'];
+            }
+            $this->view('payment/cartpage', $data);
+        }
     }
 ?>

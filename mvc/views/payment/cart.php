@@ -1,6 +1,11 @@
-
+<?php
+    if (!isset($data['cart'])){
+        $data['cart'] = [];
+    }
+?>
 <div class="cart__payment" id="payment_cart">
             <div class="cart__header">
+            <h1>Cart</h1>
                 <div class="header__content">
                     <span>(<?php echo count($data['cart']); ?>)item</span>
                     <div class="cart__burger">
@@ -11,8 +16,6 @@
 
             </div>
             <div class="cart__body">
-           
-            
             <?php 
                 
                 if($data['cart']){
@@ -20,7 +23,7 @@
                     foreach($data['cart'] as $key => $value)
                     { ?>
                         <!-- $output .= ' -->
-                        <div id="<?php echo 'pet' . $value['idPet']; ?>">
+                        <div id="<?php echo 'pet' . $value['idPet']; ?>" class="petincart">
                         
                             <div class="row cart__content" >
                                 <div class="col-3 decre_incre">

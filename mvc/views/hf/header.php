@@ -35,8 +35,13 @@
               </div>
               <div class="user">
               <div class="cart">
-                <span id="numcart">1</span>
-                <i class="fas fa-shopping-cart"></i>
+                <a href="<?php echo URL . 'home/cart'; ?>">
+                  <span id="numcart">
+                    <span id=num_cart>1</span>
+                  </span>
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+               
               </div>
               <li class="nav-item">
                 <div class="dropdown show ">

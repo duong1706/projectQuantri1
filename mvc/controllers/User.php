@@ -106,7 +106,7 @@ class User extends Controller {
             }
          }
          
-         else 
+         else
          {  
             $_SESSION['error'] = "Username or Password  is incorrect";
             Header("Location:" . URL . 'LoginAndRegister');

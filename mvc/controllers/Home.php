@@ -27,7 +27,7 @@
 
         function cart(){
             $data = [];
-            if(!isset($_Session["cart"])){
+            if(isset($_SESSION["cart"])){
                 $data['cart'] = $_SESSION['cart'];
             }
             $this->view('payment/cartpage', $data);

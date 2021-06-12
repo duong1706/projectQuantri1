@@ -18,13 +18,8 @@
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/loader.css'; ?>">
-<<<<<<< HEAD
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
-=======
-  <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick.css'; ?>">
-  <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick-theme.css'; ?>">
->>>>>>> c4cb6433409f5013c9573c360f3b801b72c3ed17
   <style type="text/css">
     .slider {
       width: 100%;

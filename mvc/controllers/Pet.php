@@ -12,10 +12,23 @@
             $this->postModel = new PostModel();
         }
         function index(){
-            $data['main'] = 'pet/list';
-            $data['pet'] = $this->petModel->getAll([], []);
-         //   $data['posts'] = $this->postModel->get();
-            $this->view('dashboard/index', $data);
+            $_SESSION['lct'] = 2;
+            if(isset($_SESSION["user"])){
+                $data['pet'] = $this->petModel->getAll([], []);
+                $data['main'] = 'pet/list';
+                //$data['product'] = $this->productModel->getAll([], []);
+                $this->view('dashboard/index', $data);
+            }
+            else{
+                $_SESSION['lct'] = 2;
+                $_SESSION['admin'] = 1;
+                Header('location:' . URL . 'LoginAndRegister');
+            }
+
+        //     $data['main'] = 'pet/list';
+        //     $data['pet'] = $this->petModel->getAll([], []);
+        //  //   $data['posts'] = $this->postModel->get();
+        //     $this->view('dashboard/index', $data);
         }
         function detail($id){
             $_SESSION['lct'] = 1;
@@ -37,7 +50,7 @@
         }
         function delete($id){
             $this->petModel->destroy($id);
-            $this->index();
+            Header("Location:" . URL . 'pet');
         }
         function store(){
             if(isset($_POST['addPet'])){
@@ -48,7 +61,7 @@
                     $anh = $_FILES['img1']['name'];
                     $path = "./public/style/images/" . $anh;
 
-                    //move_uploaded_file($tmp_name, $path);
+                    move_uploaded_file($tmp_name, $path);
                         $pet = [
                             'name'=>$_POST['name'],
                             'content'=>$_POST['content'],
@@ -58,7 +71,7 @@
                             'image'=>$anh
                         ];
                         $this->petModel->add($pet);
-                        $this->index();
+                        Header("Location:" . URL . 'pet');
                     }
             }
             $data['main'] = 'pet/add';
@@ -95,7 +108,7 @@
                 }
 
                 $this->petModel->update($id ,$pet);
-                $this->index();
+                Header("Location:" . URL . 'pet');
             }
             $data['main'] = 'pet/edit';
             $data['pet'] = $this->petModel->getPet($id);

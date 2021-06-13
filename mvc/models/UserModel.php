@@ -12,18 +12,21 @@
 
     public function add($data){
         // validation 
+        
+        
         $username =  $data["username"];
         $qr = "SELECT * FROM users WHERE username='$username' ";
         $res = mysqli_query($this->connect, $qr);
       
         if(mysqli_num_rows($res) > 0)
         {
-            return " tai khoan da ton tai ";
+            return "Tai khoan da ton tai ";
         }
         else 
         {    
-           
-            if($this->create(self::TABLE, $data))
+            $user = $data;
+            $user['token'] = JWT::encode($data, Key);
+            if($this->create(self::TABLE, $user))
             {
                return 'true';
             }
@@ -53,20 +56,26 @@
    
     public function update($id, $user){
        
-        
         $name=$user["name"];
         $username=$user["username"];
         $matkhau=$user["matkhau"];
         $gmail=$user["gmail"];
-        
 
-        $qr = "UPDATE users SET name='$name',gmail='$gmail',username='$username',matkhau='$matkhau' WHERE id='$id' ";
+        $token = JWT::encode($user, "Doiqua");
+        //$token=JWT::encode($token, "Doiqua");
+
+        $qr = "UPDATE users SET name='$name',gmail='$gmail',username='$username',matkhau='$matkhau', token='$token' WHERE id='$id' ";
         $res = mysqli_query($this->connect,$qr);
     }
     public function destroy($id){
         $qr = "DELETE FROM users WHERE id='$id'";
         $res = mysqli_query($this->connect,$qr);
         
+    }
+    public function getToken($username){
+        $qr = "SELECT token FROM users WHERE username='${username}'";
+        $res = mysqli_query($this->connect,$qr);
+        return mysqli_fetch_array($res);
     }
     public function Login($username,$password)
     {
@@ -75,11 +84,10 @@
         if(mysqli_num_rows($res) === 1)
         {  
             // tra ve user 
-           return true;
+            return $this->getToken($username);
         }
         else 
         {
-           
             return false;
         }
     }
@@ -96,8 +104,14 @@
         else 
         { 
            // $ir = "INSERT INTO users VALUES('$name','$email','$username','$password','$is_admin',1)";
-            
-            $ir = "INSERT INTO users (name, gmail, username, matkhau) VALUES ('$name', '$gmail', '$username', '$password')";
+           $user = [
+            'name'=>$name,
+            'username'=>$username,
+            'matkhau'=>$password,
+            'gmail'=>$gmail       
+         ];
+            $token = JWT::encode($user, "Doiqua");
+            $ir = "INSERT INTO users (name, gmail, username, matkhau, token) VALUES ('$name', '$gmail', '$username', '$password', '$token')";
             $resI = mysqli_query($this->connect, $ir);
          //   echo "Hello";
             if($resI)

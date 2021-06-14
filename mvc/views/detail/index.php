@@ -8,7 +8,6 @@
   <script src="https://kit.fontawesome.com/c52c16b666.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Passero+One&display=swap" rel="stylesheet">
@@ -48,6 +47,13 @@
 </head>
 
 <body>
+    <span style="display: none;" id="check_login">
+      <?php
+        if(isset($_SESSION['user'])){
+          echo $_SESSION['user']['username'];
+        }
+      ?>
+    </span>
   <div id="preloader">
     <div class="loader"></div>
   </div>
@@ -151,7 +157,8 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
             In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-         
+         <div id="review_pet">
+          <div id="review__pet">
           <?php
           
          
@@ -166,35 +173,14 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
             echo '</div>';
           }
           ?>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
           </div>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
           </div>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
-          </div>
+          
           <h4>Your review</h4>
           <div class="yourcmt">
-            <form action="<?php echo URL . 'post/addpost/' .$data['pet']['idPet']; ?>" method="post">
-              <input type="text" placeholder="type somethings" class="content__post" name="content">
-              <button class="add_post" type="submit"><i class="fas fa-paper-plane"></i></button>
+            <form action="<?php echo URL . 'post/addpost/' .$data['pet']['idPet']; ?>" method="post" style="display: flex; width: 100%;">
+              <input type="text" placeholder="type somethings" class="content__post" name="content" id="content">
+              <button class="add_post" type="submit" id="add_cmt"><i class="fas fa-paper-plane"></i></button>
             </form>
           </div>
 
@@ -279,10 +265,59 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
         slidesToScroll: 4
       });
 
+      $('#add_cmt').click(function(){
+        event.preventDefault();
+        var link = window.location.href;
+        var link2 = link.replace('pet/detail', 'post/addpost');
+        var content = $('#content').val();
+        console.log(link2);
+        console.log(link);
+        $.ajax({
+          url: link2,
+          type: 'POST',
+          data: {content: content},
+          success: function() {
+            Swal.fire({
+            icon: 'success',
+            title: 'Review Complete',
+            });
+            $('#review_pet').load(link + ' '+ '#review__pet');
+            $('#content').val('');
+          }
+        })
+      });
+
+      // $('#acheckout').click(function(event){
+      //   console.log("okok");
+      //   event.preventDefault();
+      //   console.log("okok");
+      //   var user = (String) document.getElementById("check_login").innerHTML;
+      //   user.trim();
+      //   console.log((user));
+        
+      //   if(user != ''){
+      //     console.log("ojoj");
+      //     window.location.replace("http://localhost:8080/projectQuanTri1/pet/payment");
+      //   }
+      //   else{
+      //     console.log("koko");
+      //     Swal.fire({
+      //       icon: 'error',
+      //       title: 'Not Login',
+      //       }).then(function(){
+      //         window.location.replace("http://localhost:8080/projectQuanTri1/LoginAndRegister"); 
+      //       })
+      //   }
+      // })
+
+      
+
     });
+
+    
   </script>
 
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>

@@ -97,7 +97,7 @@ class User extends Controller {
          }
          $username = validate($_POST['username']);
          $password = validate($_POST['matkhau']);
-         
+         $lct = validate($_POST['lct']);
          if (empty($username)) {
             $_SESSION['error'] = "Username  is required";
             Header("Location:" . URL . 'LoginAndRegister');
@@ -108,20 +108,20 @@ class User extends Controller {
             exit();
          }
         $flag =  $this->userModel->Login($username, $password);
+        
          if($flag)
          {
-             //echo "ok"; die();
             unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
-            $_SESSION['token'] = $flag[0];
-            $user = (array) jwt::decode($_SESSION['token'], Key, true);
-            $_SESSION['user'] = $user;
+            $_SESSION['token'] = $flag['token'];
+            //$user = (array) jwt::decode($_SESSION['token'], 'CuongGia', true);
+            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
            
-            if(isset($_SESSION['admin'])){
+            if($lct == "admin"){
                 unset($_SESSION['admin']);
                 Header("Location:" . URL . 'dashboard');
             }
-            else if(isset($_SESSION['payment'])){
+            else if($lct == "payment"){
                 unset($_SESSION['payment']);
                 Header("Location:" . URL . 'pet/payment');
             }

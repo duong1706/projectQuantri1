@@ -24,7 +24,10 @@ $('a.add1').click(function(event){
         type: 'POST',
         data: {},
         success: function(res){
-            swal("Them thanh cong", "ez", "success");
+            Swal.fire({
+                icon: 'success',
+                title: 'Them vao gio hang thanh cong',
+                });
             $("#show_cart").load("./mvc/views/payment/cart.php");
         }
     });
@@ -80,3 +83,21 @@ $('input.change').blur(function(event){
         }
     });
 });
+
+function thanhtoan(){
+    console.log("ok");
+    var user = document.getElementById("check_login").innerHTML.toString().trim();
+    if(user != ''){
+      console.log("ojoj");
+      window.location.replace("http://localhost:8080/projectQuanTri1/pet/payment");
+    }
+    else{
+      console.log("koko");
+      Swal.fire({
+        icon: 'error',
+        title: 'Not Login',
+        }).then(function(){
+          window.location.replace("http://localhost:8080/projectQuanTri1/LoginAndRegister/payment"); 
+        })
+    }
+  }

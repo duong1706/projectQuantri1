@@ -33,7 +33,7 @@
      
       <div class="payment">
           <div class="row contain__pay">
-            <div class="col-md-9">
+            <div class="col-md-7">
               <div class="contain">
                 <div class="title">
                   <h1>Shopping Cart</h1>
@@ -53,7 +53,7 @@
                           ?></p>
                           <span><?php echo $value['count']; ?></span>
                         </div>
-                        <div class="col-md-2 number">
+                        <!-- <div class="col-md-2 number">
                           <div class="delete">
                             <span></span>
                             <button><i class="far fa-trash-alt"></i></button>
@@ -61,7 +61,7 @@
                           
                           
                          
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                 <?php } ?>
@@ -70,7 +70,7 @@
               </div>
               
             </div>
-            <div class="col-md-3 buy" id="pay__price">
+            <div class="col-md-5 buy" id="pay__price">
               <div class="pay" id="pay_price">
                 <div class="title">
                   <h1>Order Summary</h1>

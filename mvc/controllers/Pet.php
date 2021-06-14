@@ -151,16 +151,16 @@
             $_SESSION['cart'][$id]['count'] = $value;
         }
         function payment(){
-            $_SESSION['lct'] = 5;
-            $_SESSION['payment'] = 1;
-            if(isset($_SESSION['user'])){
+            // $_SESSION['lct'] = 5;
+            // $_SESSION['payment'] = 1;
+            // //if(isset($_SESSION['user'])){
                 $data['customer'] = $_SESSION['user'];
                 $data['cart'] = $_SESSION['cart'];
                 $this->view('payment/payment', $data);
-            }
-            else{
-                Header('location:' . URL . 'LoginAndRegister');
-            }
+            // }
+            // else{
+            //     Header('location:' . URL . 'LoginAndRegister');
+            // }
             
         }
     }

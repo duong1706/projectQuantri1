@@ -65,7 +65,7 @@
             </div>
             <div class="cart__footer">
           
-                <div ><a  class="checkout" href="<?php echo URL . 'pet/payment/'; ?>"><span>CheckOut</span>
+                <div ><button id="acheckout" class="checkout" onclick="thanhtoan()"><span>CheckOut</span>
                     <div id="total__cart">
                         <span class="checkout__total" id="total_cart">
                             <?php
@@ -78,7 +78,7 @@
                         </span>
                     </div>
                     
-                </a></div>
+                </button></div>
             </div>
            
         </div>

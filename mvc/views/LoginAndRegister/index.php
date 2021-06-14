@@ -19,15 +19,29 @@
     <link rel="stylesheet" href="<?php echo URL  . 'public/style/css/LoginAndRegister.css'; ?>">
   </head>
   <body>
+  
     <div class="Login__Register">
       <div class="boxAuth">
         <div class="user signinBox">
           <div class="imgBox"><img src="<?php echo URL . 'public/style/images/bgformauth.jpg'; ?>" /></div>
           <div class="formBox">
-            <form method="post" action="user/login">
+            <form method="post" action="<?php echo URL . 'user/login'; ?>">
               <h2>Login</h2>
               <input type="text" name="username" placeholder="Username" />
               <input type="password" name="matkhau" placeholder="Password" />
+              <input type="text" name="lct" style="display: none;" value="<?php 
+                                                                  if(isset($_SESSION['payment'])){
+                                                                    echo "payment";
+                                                                    unset($_SESSION['payment']);
+                                                                  }
+                                                                  else if(isset($_SESSION['admin'])){
+                                                                    echo "admin";
+                                                                    unset($_SESSION['admin']);
+                                                                  }
+                                                                  else{
+                                                                    echo "home";
+                                                                  }
+                                                                ?>">
               <p style="margin: 0.5em; color: red;">
                 <?php
                   if(isset($_SESSION['error'])){

@@ -43,7 +43,8 @@
 {
     display: flex;
     justify-content: space-between;
-   
+    width: 100%;
+    border: none;
     min-height: 50px;
     align-items: center;
     background-color: #f1f1f1!important;

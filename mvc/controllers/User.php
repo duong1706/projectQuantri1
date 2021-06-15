@@ -114,8 +114,9 @@ class User extends Controller {
             unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
             $_SESSION['token'] = $flag['token'];
-            //$user = (array) jwt::decode($_SESSION['token'], 'CuongGia', true);
-            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
+            $user = (array) jwt::decode($_SESSION['token'], 'CuongGia', true);
+            $_SESSION['user'] = $user;
+            //$_SESSION['user'] = $this->userModel->getuserbyUsername($username);
            
             if($lct == "admin"){
                 unset($_SESSION['admin']);

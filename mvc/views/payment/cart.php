@@ -1,8 +1,11 @@
-<?php
-    if (!isset($data['cart'])){
-        $data['cart'] = [];
-    }
-?>
+<div id="cart__show">
+
+<div id="cart___show">
+    <?php
+        if (!isset($data['cart'])){
+            $data['cart'] = [];
+        }
+    ?>
 <div class="cart__payment" id="payment_cart">
             <div class="cart__header">
             <h1>Cart</h1>
@@ -28,7 +31,7 @@
                             <div class="row cart__content" >
                                 <div class="col-3 decre_incre">
                                     <div>
-                                        <input lct="<?php echo $data['lct']; ?>" type="number" name="number" data-id="<?php echo $value['idPet']; ?>" class="change" value="<?php echo $value['count']; ?>" style="width: 130%;font-size: 15px;">
+                                        <input type="number" name="number" data-id="<?php echo $value['idPet']; ?>" class="change" value="<?php echo $value['count']; ?>" style="width: 130%;font-size: 15px;">
                                     </div>
                                 </div>
                                 <div class="col-6 img__detail">
@@ -37,15 +40,15 @@
                                         <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
                                         </div>
                                         <div class="col-6">
-                                        <h6><?php echo $value["name"]; ?></h6>
+                                        <h4><?php echo $value["name"]; ?></h4>
                                         <h6><?php echo $value["color"]; ?></h6>
-                                        <h6><?php echo '$' . number_format($value["price"]);  ?></h6>
+                                        <h5><?php echo '$' . number_format($value["price"]);  ?></h5>
                                         </div>
 
                                     </div>
                                 </div>
                                 <div id="<?php echo 'cart__content' . $value['idPet']; ?>">
-                                    <div class="col-2 pet__price" id="<?php echo 'totalPet' . $value['idPet']; ?>" lct="<?php echo $data['lct']; ?>">
+                                    <div class="col-2 pet__price" id="<?php echo 'totalPet' . $value['idPet']; ?>">
                                         <?php echo '$' . number_format($value["price"] * $value['count']); ?>
                                     </div>
                                 </div>
@@ -87,6 +90,8 @@
         <div class="cart__icon" id="icon__cart"><?php echo '(' . count($data['cart']) . ')Icon' ;?></div>
         
         
-       
+        </div>  
+</div> 
+
         <!-- id="paypal-button"  -->
         <!-- AT9PHTR_hrxkia4SkLyokNAVg-7GDYJ0wRWEwirsG1OGRKv336LQm8zmGGU40If29BBAwIu8x_t-drUC  -->

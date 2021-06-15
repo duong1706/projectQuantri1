@@ -14,9 +14,9 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/detail.css'; ?>">
-  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/loader.css'; ?>">
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/header.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
   <style type="text/css">
@@ -57,7 +57,13 @@
   <div id="preloader">
     <div class="loader"></div>
   </div>
+  
   <div class="detail__pet">
+  <div id="header1">
+          <?php
+            require_once './mvc/views/hf/header.php';
+          ?>
+        </div>
     <div id="product">
 
       <div class="ok">
@@ -126,7 +132,7 @@
               <h2 class="price"><?php echo 'Price: $' . $data['pet']['price']; ?></h2>
               <hr>
               <div class="addcart">
-                <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1"><i class="fas fa-shopping-basket"></i></a></button>
+                <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add2"><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
               </div>
@@ -241,23 +247,19 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
     </div>
   </div>
 
-  <div id="show_cart">
-    <?php
-    require_once "./mvc/views/payment/cart.php"
-    ?>
-  </div>
+  
   <div>
     <?php
     require_once './mvc/views/hf/footer.php';
     ?>
   </div>
-
-  <script src="<?php echo URL . 'public/style/js/loader.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php echo URL . 'public/style/js/loader.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo URL . 'public/style/js/post.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
+    
     $(document).on('ready', function() {
       $(".regular").slick({
         infinite: true,

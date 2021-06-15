@@ -13,11 +13,7 @@
         <input class="w3-input" type="text" name="name">
         
     </p>
-    <p>
-        <label>Hinh Anh</label>
-        <input type="file" name="img1">
-        
-    </p>   <p>
+       <p>
         <label>Content</label>
         <input class="w3-input" type="text" name="content">
         
@@ -36,6 +32,11 @@
         <input class="w3-input" type="text" name="star">
         
     </p>   
+    <p style="margin-top: 1em;">
+        <label>Hinh Anh</label>
+        <input type="file" name="img1">
+        
+    </p>
     <div class="card-header">
         <span></span>
         <button><input class="trong" type="submit" value="Insert" name="addPet"></button>

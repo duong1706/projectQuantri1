@@ -14,7 +14,7 @@
 
     <style>
         .trong{
-            color: #000;
+            color: #fff;
             border: none;
             background: transparent !important;
         }

@@ -35,11 +35,21 @@
               </div>
               <div class="user">
               <div class="cart">
-                <a href="<?php echo URL . 'home/cart'; ?>">
+                <a href="<?php echo URL . 'home/cart'; ?>" class="cart_home">
                   <span id="numcart">
-                    <span id=num_cart>1</span>
+                    <span id=num_cart>
+                      <?php
+                        if(isset($_SESSION['cart'])){
+                          echo count($_SESSION['cart']);
+                        }
+                        else{
+                          echo "0";
+                        }
+                      ?>
+                    </span>
                   </span>
                   <i class="fas fa-shopping-cart"></i>
+                  
                 </a>
                
               </div>

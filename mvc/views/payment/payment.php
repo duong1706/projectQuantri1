@@ -209,8 +209,8 @@
             return actions.order.create({
             purchase_units : [{
                 amount: {
-                    value: fee
-                    //value: '0.1'
+                    //value: fee
+                    value: '0.1'
                 }
             }]
         });

@@ -165,6 +165,7 @@ table{
 }
 
 .card{
+    width: 50%;
     background: #fff;
     border-radius: 5px;
 }

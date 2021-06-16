@@ -12,8 +12,8 @@
                         <table width="100%">
                             <thead>
                                 <tr>
-                                        <th>Ten Pet</th>
-                                        <th>Hinh Anh</th>
+                                        <th>Pet Name</th>
+                                        <th>Image</th>
                                         <th>Content</th>
                                         <th>Color</th>
                                         <th>Price</th>

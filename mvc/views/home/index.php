@@ -173,6 +173,10 @@
                 width: 80%;
                 margin: 0 auto;
             }
+            .cart__payment{
+              width: 70%;
+              margin: 0 auto;
+            }
 
   </style>
   </head>

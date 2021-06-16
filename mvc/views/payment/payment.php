@@ -28,7 +28,9 @@
     <div id="preloader">
       <div class="loader"></div>
     </div>
-
+    <div style="display: none;">
+      <span id="user"><?php echo $_SESSION['user']['username']; ?></span>
+    </div>
     <div class="cart">
      
       <div class="payment">
@@ -93,7 +95,7 @@
                 </div>
             
               
-                <button>Thanh Toán Bằng Các Thẻ </button>
+                <button>Pay</button>
                 <span id="paypalbutton" style="text-align:center;width:100%;"></span>
               </div>
               
@@ -226,15 +228,37 @@
             title: 'Thành Công',
           }).then(function(){
               var email = $('#emailok').val();
+              var fee2 = totalAll.getAttribute("fee");
               Email.send({
                   SecureToken : "a2b5068d-0b8f-448f-b57e-62f40033271d",
                   To : email,
                   From : "hieu.organic123@gmail.com",
                   Subject : "Dat hang thanh cong",
-                  Body : "Dat hang thanh cong"
+                  Body : "Ban da thanh cong dat hang tai PetShop. Gia tri don hang la " + fee2
                 })
             }).then(function(){
-              window.location.replace("http://localhost:8080/projectQuanTri1"); 
+              var totalprice = totalAll.getAttribute("fee");
+              var user = document.getElementById("user").textContent;
+              var date = new Date();
+              var dd = String(date.getDate()).padStart(2, '0');
+              var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+              var yyyy = date.getFullYear();
+              var link = "http://localhost:8080/projectQuanTri1/dashboard/createbill/"
+
+              //date = mm + '/' + dd + '/' + yyyy;
+              totalprice = parseInt(totalprice);
+              date = yyyy + '/' + mm + '/' + dd;
+              $.ajax({
+                url: link,
+                type: "POST",
+                data: {date: date, totalprice: totalprice, user: user},
+                success: function(){
+                }
+              });
+              
+              
+            }).then(function(){
+              window.location.replace("http://localhost:8080/projectQuanTri1/pet/delallcart"); 
             })
         })
       },

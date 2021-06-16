@@ -23,7 +23,7 @@ $('a.removeCart').click(function(event){
     var href = $(this).attr("href");
     var id = $(this).attr("data-id");
     var name = "#pet" + id;
-    var link = window.location.href;ss
+    var link = window.location.href;
     $.ajax({
         url: href,
         type: 'GET',
@@ -41,11 +41,10 @@ $('input.change').change(function(event){
     var totalPet = '#totalPet' + id;
     var link = window.location.href;
     var href = link.replace('home/cart', 'pet/updatecart') +  '/' + id;
-    console.log(href);
     if(value <= 0){
         value = 1;
+        $(this).val(1);
     }
-    console.log(link);
     $.ajax({
         url: href,
         type: 'POST',
@@ -59,14 +58,11 @@ $('input.change').change(function(event){
 });
 
 function thanhtoan(){
-    console.log("ok");
     var user = document.getElementById("check_login").innerHTML.toString().trim();
     if(user != ''){
-      console.log("ojoj");
       window.location.replace("http://localhost:8080/projectQuanTri1/pet/payment");
     }
     else{
-      console.log("koko");
       Swal.fire({
         icon: 'error',
         title: 'Not Login',

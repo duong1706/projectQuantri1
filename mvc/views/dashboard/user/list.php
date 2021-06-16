@@ -15,6 +15,7 @@
                                         <th>Name</th>
                                         <th>UserName</th>
                                         <th>Gmail</th>
+                                        <th>Admin</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
 
@@ -26,6 +27,7 @@
                                         <td class="name" data-id="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></td>
                                         <td><?php echo $value['username']; ?></td>
                                         <td><?php echo $value['gmail']; ?></td>
+                                        <td><?php echo $value['admin']; ?></td>
                                         <td><a href="<?php echo URL . "user/edit/${value['id']}"; ?>">Edit</a></td>
                                         <td><a href="<?php echo URL . "user/delete/${value['id']}"; ?>">Delete</a></td>
                                     </tr>

@@ -205,7 +205,8 @@ h1{
 .cal_ship{
     margin: 1em;
     padding: .5em 1em .5em 1em;
-    background: yellow;
+    background: #FF5959;
+    color: #fff;
     border: none;
     border-radius: 10px;
 }

@@ -7,7 +7,7 @@
               </a>
           </nav>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon toggle__icon"></span>
        </button>
   
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -67,7 +67,14 @@
                     </a>
                 
                     <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
-                    <a class="dropdown-item" href="<?php echo URL . 'dashboard'; ?>">Admin</a>
+                      <?php
+                        if(isset($_SESSION['user'])){
+                          if($_SESSION['user']['admin'] == 1){
+                            echo  "<a class='dropdown-item' href=" . URL . 'dashboard' . ">Admin</a>"; 
+                          }
+                        }
+                      ?>
+                  
                     <a class="dropdown-item log" href="<?php 
                                                       if(isset($_SESSION['user'])){
                                                         echo URL . 'user/logout';

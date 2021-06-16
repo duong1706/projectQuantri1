@@ -14,11 +14,16 @@
         function index(){
             $_SESSION['lct'] = 2;
             if(isset($_SESSION["user"])){
-                $data['pet'] = $this->petModel->getAll([], []);
-                $data['main'] = 'pet/list';
-                //$data['product'] = $this->productModel->getAll([], []);
-                $this->view('dashboard/index', $data);
+                if($_SESSION["user"]['admin']){
+                    $data['pet'] = $this->petModel->getAll([], []);
+                    $data['main'] = 'pet/list';
+                    $this->view('dashboard/index', $data);
+                }
+                else{
+                    Header('location:' . URL);
+                }
             }
+            
             else{
                 $_SESSION['lct'] = 2;
                 $_SESSION['admin'] = 1;
@@ -125,18 +130,9 @@
                 $pet['count'] = $_SESSION['cart'][$id]['count'] + 1;
             }
             $_SESSION['cart'][$id] = $pet;
-            //$this->detail($id);
-            if($_SESSION['lct'] == 1){
-                header("location:" . URL . 'pet/detail/' . $id);
-            }
-            //print_r($data['cart']); die();
-            else if($_SESSION['lct'] == 0){
-                ///$this->view('home/index', $data);
-                //print_r($data); die();
-                header("location:" . URL);
-            }
-
+            
         }
+
         function deletecart($id){
             unset($_SESSION['cart'][$id]);
             if($_SESSION['lct'] == 1){
@@ -146,10 +142,17 @@
                 header("location:" . URL);
             }
         }
+
+        function delallcart(){
+            unset($_SESSION['cart']);
+            header("location:" . URL);
+        }
+
         function updatecart($id){
             $value = $_POST['value'];
             $_SESSION['cart'][$id]['count'] = $value;
         }
+
         function payment(){
             // $_SESSION['lct'] = 5;
             // $_SESSION['payment'] = 1;
@@ -163,5 +166,6 @@
             // }
             
         }
+
     }
 ?>

@@ -14,14 +14,28 @@
         }
         function index(){
             $_SESSION['lct'] = 2;
+            
             if(isset($_SESSION["user"])){
-                $data['pet'] = $this->petModel->getAll([], []);
-                $data['user'] = $this->userModel->getAll([], []);
-                $data['bill'] = $this->billModel->getAll([], []);
-                $data['main'] = 'card/card';
-                //$data['product'] = $this->productModel->getAll([], []);
-                $this->view('dashboard/index', $data);
+                if($_SESSION['user']['admin']){
+                    $data['pet'] = $this->petModel->getAll([], []);
+                    $data['user'] = $this->userModel->getAll([], []);
+                    $data['bill'] = $this->billModel->getAll([], []);
+                    $data['main'] = 'card/card';
+    
+                    function sortFunction( $a, $b ) {
+                        return -strtotime($a["date"]) + strtotime($b["date"]);
+                    }
+                    usort($data['bill'], "sortFunction");
+                    //var_dump($data['bill']);
+                    
+                    $this->view('dashboard/index', $data);
+                }
+                else{
+                    Header('location:' . URL);
+                }
+                
             }
+
             else{
                 $_SESSION['lct'] = 2;
                 $_SESSION['admin'] = 1;
@@ -44,7 +58,7 @@
                 Header("Location:" . URL . 'dashboard');
             }
 
-
+            $data['user'] = $this->userModel->getAll([], []);
             $data['main'] = 'card/add';
             $this->view('dashboard/index', $data);
         }
@@ -60,9 +74,19 @@
                 Header("Location:" . URL . 'dashboard');
             }
 
+            $data['user'] = $this->userModel->getAll([], []);
             $data['main'] = 'card/edit';
             $data['bill'] = $this->billModel->getBill($id);
             $this->view('dashboard/index', $data);
+        }
+
+        function createbill(){
+            $bill = [
+                'user'=>$_POST['user'],
+                'date'=>$_POST['date'],
+                'totalprice'=>$_POST['totalprice']
+            ];
+            $this->billModel->add($bill);
         }
     }
 ?>

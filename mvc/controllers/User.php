@@ -11,10 +11,15 @@ class User extends Controller {
     function index(){
         $_SESSION['lct'] = 2;
         if(isset($_SESSION["user"])){
-            $data['user'] = $this->userModel->getAll([], []);
-            $data['main'] = 'user/list';
-            //$data['product'] = $this->productModel->getAll([], []);
-            $this->view('dashboard/index', $data);
+            if($_SESSION["user"]['admin']){
+                $data['user'] = $this->userModel->getAll([], []);
+                $data['main'] = 'user/list';
+                $this->view('dashboard/index', $data);
+            }
+            else{
+                Header('location:' . URL);
+            }
+            
         }
         else{
             $_SESSION['lct'] = 2;
@@ -23,18 +28,8 @@ class User extends Controller {
         }
 
 
-
-        // $data['main'] = 'user/list';
-        // $data['user'] = $this->userModel->getAll([], []);
-        // $this->view('dashboard/index', $data);
       
     }
-    // function add(){
-    //     $data['main'] = 'add/list';
-    //     $data['user'] = $this->userModel->getAll([], []);
-    //     $this->view('dashboard/index', $data);
-      
-    // }
     function addUser(){
         $data['main'] = 'user/add';
         $this->view('dashboard/index', $data);
@@ -43,11 +38,18 @@ class User extends Controller {
     function add(){
         if(isset($_POST["addUser"]))
         {
+            if(isset($_POST['admin'])){
+                $admin = 1;
+            }
+            else{
+                $admin = 0;
+            }
             $user = [
                'name'=>$_POST['name'],
                'username'=>$_POST['username'],
                'matkhau'=>$_POST['matkhau'],
-               'gmail'=>$_POST['gmail']
+               'gmail'=>$_POST['gmail'],
+               'admin'=>$admin
             ];
         $dialog = $this->userModel->add($user);
         $data['main'] = 'user/add';
@@ -65,21 +67,35 @@ class User extends Controller {
     }
 
     function edit($id){
+        $data['main'] = 'user/edit';
+        $data['user'] =  $this->userModel->getuser($id);    
+        $username = $data['user']['username'];
+
         if(isset($_POST["editUser"])){
+            if(isset($_POST['admin'])){
+                $admin = 1;
+            }
+            else{
+                $admin = 0;
+            }
             $user = [
                 'name'=>$_POST['name'],
-                'username'=>$_POST['username'],
+                'username'=>$username,
                 'matkhau'=>$_POST['matkhau'],
-                'gmail'=>$_POST['gmail']       
+                'gmail'=>$_POST['gmail'],
+                'admin'=>$admin       
              ];
               $this->userModel->update($id, $user);
               Header("Location:" . URL . 'user');
         }
-        else {
-            $data['main'] = 'user/edit';
-            $data['user'] =  $this->userModel->getuser($id);    
+        else{
             $this->view('dashboard/index', $data);
         }
+        // else {
+        //     $data['main'] = 'user/edit';
+        //     $data['user'] =  $this->userModel->getuser($id);    
+        //     $this->view('dashboard/index', $data);
+        // }
        
     }
     function delete($id){

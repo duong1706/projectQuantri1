@@ -1,4 +1,5 @@
 
+
 $('.search').keyup(function(){
     var key = $(this).val().toLowerCase();
     var name = document.getElementsByClassName('name');
@@ -13,3 +14,4 @@ $('.search').keyup(function(){
         }
     }
 });
+

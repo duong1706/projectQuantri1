@@ -68,11 +68,18 @@
 
       <div class="ok">
         <div class="name">
-          <ul>
+          <ul style="
+    display: flex;
+    align-items: center;
+    padding: 1em 0 1em 0;
+    margin: 0;
+">
             <li><a href="<?php echo URL; ?>">Home</a></li>
             <li><i class="fas fa-angle-double-right"></i></li>
             <li>
-              <p><?php echo $data['pet']['name']; ?></p>
+              <p style="
+    margin: 0;
+"><?php echo $data['pet']['name']; ?></p>
             </li>
           </ul>
         </div>
@@ -129,16 +136,16 @@
                 <i class="fas fa-star"></i>
                 <a class="reviewNum" href="#">(1 customer review)</a>
               </div>
-              <h2 class="price"><?php echo 'Price: $' . $data['pet']['price']; ?></h2>
+              <h2 class="price"><?php echo 'Price: $' . number_format($data['pet']['price']); ?></h2>
               <hr>
               <div class="addcart">
                 <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add2"><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
               </div>
-              <p class="des1"><b>Description: </b><?php echo $data['pet']['content'] . " One Piece (ワンピース Wan Pīsu?), từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro, được đăng định kì trên tạp chí Weekly Shōnen Jump, ra mắt lần đầu trên ấn bản số 34 vào ngày 19 tháng 7 năm 1997. Bản tankōbon của truyện do Shueisha phát hành với tập đầu tiên vào ngày 24 tháng 12 năm 1997. One Piece kể về cuộc hành trình của Monkey D. Luffy - thuyền trưởng của băng hải tặc Mũ Rơm và các đồng đội của cậu. Luffy tìm kiếm vùng biển bí ẩn nơi cất giữ kho báu lớn nhất thế giới One Piece, với mục tiêu trở thành Tân Vua Hải Tặc.
+              <p class="des1"><b>Description: </b><?php echo $data['pet']['content'] . " At some point during the Void Century, a man named Joy Boy came across an island located at the end of the Grand Line. Here, he left behind a treasure of unimaginable value.[2] Stories of this treasure on the final island peaked the interest of Gol D. Roger, and he took the World Government forbidding exploration of the island as evidence of it being real.[3]
 
-One Piece cũng được chuyển thể sang một vài loại hình truyền thông khác nhau. Một OVA được hãng Production I.G sản xuất vào năm 1998. Tiếp đó, phiên bản anime dài tập do hãng Toei Animation thực hiện, bắt đầu lên sóng truyền hình Nhật Bản vào năm 1999. Toei cũng sản xuất 11 phim hoạt hình, một OVA và 5 chương trình truyền hình đặc biệt liên quan. Một vài công ty đã phát triển nhiều sản phẩm khác dựa vào truyện như thẻ game, video game. Bộ manga phiên bản tiếng Anh được cấp phép cho hãng Viz Media phát hành ở thị trường Bắc Mỹ, hãng Gollancz Manga ở Anh Quốc, Madman Entertainment ở Australia và New Zealand. Ở Bắc Mỹ, bộ anime được cấp phép bản địa hóa và phân phối bằng tiếng Anh bởi hãng Funimation Entertainment."; ?></p>
+Only the members of the Roger Pirates that journeyed to the island know what exactly the treasure consists of. Upon arriving on the island and seeing Joy Boy's treasure, the Roger Pirates simply began to laugh. Roger described it as a tale full of laughs, which gave him the idea to name the final island Laugh Tale.[2] Sometime after the Roger Pirates' discovery, the world at large would begin to refer to the enigmatic treasure as the One Piece.."; ?></p>
             </div>
 
           </div>
@@ -288,31 +295,6 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
           }
         })
       });
-
-      // $('#acheckout').click(function(event){
-      //   console.log("okok");
-      //   event.preventDefault();
-      //   console.log("okok");
-      //   var user = (String) document.getElementById("check_login").innerHTML;
-      //   user.trim();
-      //   console.log((user));
-        
-      //   if(user != ''){
-      //     console.log("ojoj");
-      //     window.location.replace("http://localhost:8080/projectQuanTri1/pet/payment");
-      //   }
-      //   else{
-      //     console.log("koko");
-      //     Swal.fire({
-      //       icon: 'error',
-      //       title: 'Not Login',
-      //       }).then(function(){
-      //         window.location.replace("http://localhost:8080/projectQuanTri1/LoginAndRegister"); 
-      //       })
-      //   }
-      // })
-
-      
 
     });
 

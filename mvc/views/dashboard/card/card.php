@@ -34,7 +34,7 @@
                             foreach($data['bill'] as $key => $value){
                                 $tong += $value['totalprice'];
                             }
-                            echo $tong;
+                            echo number_format($tong);
                         ?></h1>
                         <span>Income</span>
                     </div>
@@ -58,10 +58,10 @@
                         <table width="100%">
                             <thead>
                                 <tr>
-                                        <th>So hoa don</th>
-                                        <th>Nguoi mua</th>
-                                        <th>Ngay</th>
-                                        <th>Tong gia tri</th>
+                                        <th>Bill number</th>
+                                        <th>User</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
 
@@ -70,10 +70,11 @@
                             <tbody>
                             <?php foreach ($data['bill'] as $key => $value) { ?>
                                     <tr role="row" class="odd" id = "data-<?php echo $value['id']; ?>">
-                                        <td class="name" data-id="<?php echo $value['id']; ?>"><?php echo $value['id']; ?></td>
-                                        <td><?php echo $value['user']; ?></td>
+                                        
+                                        <td><?php echo $value['id']; ?></td>
+                                        <td class="name" data-id="<?php echo $value['id']; ?>"><?php echo $value['user']; ?></td>
                                         <td><?php echo $value['date']; ?></td>
-                                        <td><?php echo $value['totalprice']; ?></td>   
+                                        <td>$<?php echo number_format($value['totalprice']); ?></td>   
                                         <td><a href="<?php echo URL . "dashboard/editbill/${value['id']}"; ?>">Edit</a></td>
                                         <td><a href="<?php echo URL . "dashboard/deletebill/${value['id']}"; ?>">Delete</a></td>
                                     </tr>

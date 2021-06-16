@@ -8,9 +8,13 @@
     ?>
 <div class="cart__payment" id="payment_cart">
             <div class="cart__header">
-            <h1>Cart</h1>
+            <h1 style="
+    background: black;
+    color: white;
+    padding: .5em;
+">Cart</h1>
                 <div class="header__content">
-                    <span>(<?php echo count($data['cart']); ?>)item</span>
+                    <span><?php echo count($data['cart']); ?> Product in Cart</span>
                     <div class="cart__burger">
                     <div class="burger"></div>
 
@@ -29,12 +33,8 @@
                         <div id="<?php echo 'pet' . $value['idPet']; ?>" class="petincart">
                         
                             <div class="row cart__content" >
-                                <div class="col-3 decre_incre">
-                                    <div>
-                                        <input type="number" name="number" data-id="<?php echo $value['idPet']; ?>" class="change" value="<?php echo $value['count']; ?>" style="width: 130%;font-size: 15px;">
-                                    </div>
-                                </div>
-                                <div class="col-6 img__detail">
+                                
+                                <div class="col-3 img__detail">
                                     <div class="row">
                                         <div class="col-6">
                                         <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
@@ -47,14 +47,21 @@
 
                                     </div>
                                 </div>
-                                <div id="<?php echo 'cart__content' . $value['idPet']; ?>">
+                                <div class="col-3 decre_incre">
+                                    <div>
+                                        <input type="number" name="number" data-id="<?php echo $value['idPet']; ?>" class="change" value="<?php echo $value['count']; ?>" style="width: 150%;font-size: 15px;">
+                                    </div>
+                                </div>
+                                <div class="col-4" id="<?php echo 'cart__content' . $value['idPet']; ?>">
                                     <div class="col-2 pet__price" id="<?php echo 'totalPet' . $value['idPet']; ?>">
                                         <?php echo '$' . number_format($value["price"] * $value['count']); ?>
                                     </div>
                                 </div>
                                 
-                                <div class="col-1">
-                                <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>" class="removeCart" data-id="<?php echo $value['idPet']; ?>"><button>x</button></a>
+                                <div class="col-2">
+                                <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>" class="removeCart" data-id="<?php echo $value['idPet']; ?>"><button style="border: none;
+    background: transparent;
+    font-size: 1.5em;">x</button></a>
                                 </form>
                                 </div>
                     

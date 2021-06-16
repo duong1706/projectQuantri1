@@ -10,22 +10,30 @@
       <form class="w3-container" method="post">
         <p>
         <label>User</label>
-        <input class="w3-input" type="text" name="user">
-        
+        <select id="cars" name="user" style="
+    width: 100%;
+    margin: .5em 0 .5em 0;
+">
+          <?php foreach($data['user'] as $value){ ?>
+              <option value="<?php echo $value['username']; ?>"><?php echo $value['username']; ?></option>
+          <?php  } ?>
+        </select>
     </p>
     <p>
-        <label>Ngay</label>
+        <label>Date</label>
         <input type="date" name="date" class="w3-input">
         
     </p>   <p>
-        <label>Tong gia tri</label>
-        <input class="w3-input" type="text" name="totalprice">
+        <label>Price</label>
+        <input class="w3-input vali" type="text" name="totalprice">
         
     </p>  
     
     
     <div class="card-header">
-        <span>  <?php 
+    <span id="error" style="
+    color: red;
+">  <?php 
       if(isset($data['dialog']))
       {
           echo $data['dialog'];
@@ -40,3 +48,6 @@
   </div>
 
 </div>
+
+<script src="<?php echo URL . 'public/style/js/validate.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  

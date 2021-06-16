@@ -60,11 +60,11 @@
         $username=$user["username"];
         $matkhau=$user["matkhau"];
         $gmail=$user["gmail"];
-
+        $admin=$user["admin"];
         $token = JWT::encode($user, "Doiqua");
         //$token=JWT::encode($token, "Doiqua");
 
-        $qr = "UPDATE users SET name='$name',gmail='$gmail',username='$username',matkhau='$matkhau', token='$token' WHERE id='$id' ";
+        $qr = "UPDATE users SET name='$name',gmail='$gmail', matkhau='$matkhau', token='$token', admin='$admin' WHERE id='$id' ";
         $res = mysqli_query($this->connect,$qr);
     }
     public function destroy($id){

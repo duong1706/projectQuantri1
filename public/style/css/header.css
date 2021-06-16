@@ -2,6 +2,10 @@
   background: #fff;
 }
 
+.toggle__icon{
+  background-image: url(./public/style/images/menu-button.svg);
+}
+
 
 .navbar_home{
     width: 100% !important;

@@ -236,24 +236,24 @@
                   Subject : "Dat hang thanh cong",
                   Body : "Ban da thanh cong dat hang tai PetShop. Gia tri don hang la " + fee2
                 }).then(function(){
-                  // var totalprice = totalAll.getAttribute("fee");
-                  // var user = document.getElementById("user").textContent;
-                  // var date = new Date();
-                  // var dd = String(date.getDate()).padStart(2, '0');
-                  // var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
-                  // var yyyy = date.getFullYear();
-                  // var link = "http://localhost:8080/projectQuanTri1/dashboard/createbill/"
+                  var totalprice = totalAll.getAttribute("fee");
+                  var user = document.getElementById("user").textContent;
+                  var date = new Date();
+                  var dd = String(date.getDate()).padStart(2, '0');
+                  var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+                  var yyyy = date.getFullYear();
+                  var link = "http://localhost:8080/projectQuanTri1/dashboard/createbill/"
 
-                  // //date = mm + '/' + dd + '/' + yyyy;
-                  // totalprice = parseInt(totalprice);
-                  // date = yyyy + '/' + mm + '/' + dd;
-                  // $.ajax({
-                  //   url: link,
-                  //   type: "POST",
-                  //   data: {date: date, totalprice: totalprice, user: user},
-                  //   success: function(){
-                  //   }
-                  // });
+                  //date = mm + '/' + dd + '/' + yyyy;
+                  totalprice = parseInt(totalprice);
+                  date = yyyy + '/' + mm + '/' + dd;
+                  $.ajax({
+                    url: link,
+                    type: "POST",
+                    data: {date: date, totalprice: totalprice, user: user},
+                    success: function(){
+                    }
+                  });
 
                 })
             }).then(function(){

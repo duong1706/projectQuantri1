@@ -34,31 +34,31 @@
                         
                             <div class="row cart__content" >
                                 
-                                <div class="col-3 img__detail">
+                                <div class="col-6 col-lg-2 img__detail">
                                     <div class="row">
                                         <div class="col-6">
                                         <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
                                         </div>
                                         <div class="col-6">
-                                        <h4><?php echo $value["name"]; ?></h4>
-                                        <h6><?php echo $value["color"]; ?></h6>
-                                        <h5><?php echo '$' . number_format($value["price"]);  ?></h5>
+                                        <h4 class="h4c"><?php echo $value["name"]; ?></h4>
+                                        <h6 class="h6c"><?php echo $value["color"]; ?></h6>
+                                        <h5 class="h5c"><?php echo '$' . number_format($value["price"]);  ?></h5>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="col-3 decre_incre">
+                                <div class="col-2 col-lg-4 decre_incre">
                                     <div>
                                         <input type="number" name="number" data-id="<?php echo $value['idPet']; ?>" class="change" value="<?php echo $value['count']; ?>" style="width: 150%;font-size: 15px;">
                                     </div>
                                 </div>
-                                <div class="col-4" id="<?php echo 'cart__content' . $value['idPet']; ?>">
+                                <div class="col-2 col-lg-4" id="<?php echo 'cart__content' . $value['idPet']; ?>">
                                     <div class="col-2 pet__price" id="<?php echo 'totalPet' . $value['idPet']; ?>">
                                         <?php echo '$' . number_format($value["price"] * $value['count']); ?>
                                     </div>
                                 </div>
                                 
-                                <div class="col-2">
+                                <div class="col-2 col-lg-2">
                                 <a href="<?php echo URL . 'pet/deletecart/' . $value['idPet']; ?>" class="removeCart" data-id="<?php echo $value['idPet']; ?>"><button style="border: none;
     background: transparent;
     font-size: 1.5em;">x</button></a>

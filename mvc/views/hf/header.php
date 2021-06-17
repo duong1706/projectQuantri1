@@ -1,4 +1,24 @@
+<style>
+.toggle__icon{
+  background-image: url(http://localhost:8080/projectQuanTri1/public/style/images/menu-button.svg);
+}
+.search, .user {
+    display: flex;
+    justify-content: flex-end;
+}
+@media screen and (max-width: 767px) {
+  .ok{
+    width: 95%;
+  }
+  #header1{
+    width: 95% !important;
+  }
+  .search{
+    display: none;
+  }
+}
 
+</style>
 
 <nav class="navbar navbar-expand-lg ok">
           <nav class="navbar">
@@ -26,7 +46,7 @@
                   <form class="form-inline my-2 my-lg-0">
                       <input  class="form-control mr-sm-2 formsearch inputt" type="search"  placeholder="What do you need..." aria-label="Search">
                       <div>
-                      <i class="fa fa-search iconsearch"></i>
+                     
                       </div>
                   </form>
                   

@@ -17,6 +17,17 @@
     
     <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
     <style>
+        @media screen and (max-width: 767px){
+            .h4c{
+                font-size: 12px;
+            }
+            .h5c{
+                font-size: 11px;
+            }
+            .h6c{
+                font-size: 10px;
+            }
+        }
                     
             .cart__payment .header__content
             {

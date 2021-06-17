@@ -44,10 +44,10 @@
                   foreach ($data['cart'] as $value) { ?>
                      <div class="product">
                       <div class="row">
-                        <div class="col-md-2 productImg">
+                        <div class="col-md-4 col-xl-2 productImg">
                           <img src="<?php echo URL . 'public/style/images/' . $value['image']; ?>" alt="">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-xl-10">
                           <h4><?php echo $value['name']; ?></h4>
                           <p><?php 
                             echo '$' . number_format($value['price'] * $value['count']); 

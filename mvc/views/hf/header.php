@@ -7,7 +7,7 @@
               </a>
           </nav>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon toggle__icon"></span>
        </button>
   
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -35,8 +35,23 @@
               </div>
               <div class="user">
               <div class="cart">
-                <span id="numcart">1</span>
-                <i class="fas fa-shopping-cart"></i>
+                <a href="<?php echo URL . 'home/cart'; ?>" class="cart_home">
+                  <span id="numcart">
+                    <span id=num_cart>
+                      <?php
+                        if(isset($_SESSION['cart'])){
+                          echo count($_SESSION['cart']);
+                        }
+                        else{
+                          echo "0";
+                        }
+                      ?>
+                    </span>
+                  </span>
+                  <i class="fas fa-shopping-cart"></i>
+                  
+                </a>
+               
               </div>
               <li class="nav-item">
                 <div class="dropdown show ">
@@ -52,7 +67,14 @@
                     </a>
                 
                     <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
-                    <a class="dropdown-item" href="<?php echo URL . 'dashboard'; ?>">Admin</a>
+                      <?php
+                        if(isset($_SESSION['user'])){
+                          if($_SESSION['user']['admin'] == 1){
+                            echo  "<a class='dropdown-item' href=" . URL . 'dashboard' . ">Admin</a>"; 
+                          }
+                        }
+                      ?>
+                  
                     <a class="dropdown-item log" href="<?php 
                                                       if(isset($_SESSION['user'])){
                                                         echo URL . 'user/logout';

@@ -15,7 +15,7 @@
     </p>
     <p>
         <label>UserName</label>
-        <input class="w3-input" type="text" name="username" value="<?php echo $data['user']['username'] ?>">
+        <input class="w3-input" type="text" name="username" value="<?php echo $data['user']['username'] ?>" disabled>
         
     </p> 
     <p>
@@ -28,9 +28,23 @@
         <input class="w3-input" type="text" name="gmail" value="<?php echo $data['user']['gmail'] ?>">
         
     </p>  
-    
+    <p style="margin-top: .5em;">
+      <input <?php
+        if($data['user']['admin']){
+          echo "checked";
+        }
+      ?> type="checkbox" id="admin" name="admin" value="admin">
+      <label for="" >   Admin</label>
+    </p>
     <div class="card-header">
-        <span></span>
+    <span id="error" style="
+    color: red;
+">  <?php 
+      if(isset($data['dialog']))
+      {
+          echo $data['dialog'];
+      }
+      ?></span>
         <button><input class="trong" type="submit" value="Update" name="editUser"></button>
     </div>
    
@@ -39,3 +53,7 @@
   </div>
 
 </div>
+
+
+<script src="<?php echo URL . 'public/style/js/validate.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  

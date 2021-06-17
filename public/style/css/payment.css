@@ -106,7 +106,7 @@
     background: #FF5959;
     border-radius: 3px;
     color: #fff;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -130,7 +130,7 @@
 	border: 1px solid #ebebeb;
 	padding-left: 20px;
 	font-size: 16px;
-	color: #b2b2b2;
+	color: #000;
 	border-radius: 4px;
 }
 
@@ -201,4 +201,12 @@ i{
 h1{
     font-size: 2rem;
     color: green;
+}
+.cal_ship{
+    margin: 1em;
+    padding: .5em 1em .5em 1em;
+    background: #FF5959;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
 }

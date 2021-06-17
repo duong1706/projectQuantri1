@@ -9,17 +9,27 @@ class User extends Controller {
         $this->petModel = new PetModel();
     }
     function index(){
-        $data['main'] = 'user/list';
-        $data['user'] = $this->userModel->getAll([], []);
-        $this->view('dashboard/index', $data);
+        $_SESSION['lct'] = 2;
+        if(isset($_SESSION["user"])){
+            if($_SESSION["user"]['admin']){
+                $data['user'] = $this->userModel->getAll([], []);
+                $data['main'] = 'user/list';
+                $this->view('dashboard/index', $data);
+            }
+            else{
+                Header('location:' . URL);
+            }
+            
+        }
+        else{
+            $_SESSION['lct'] = 2;
+            $_SESSION['admin'] = 1;
+            Header('location:' . URL . 'LoginAndRegister');
+        }
+
+
       
     }
-    // function add(){
-    //     $data['main'] = 'add/list';
-    //     $data['user'] = $this->userModel->getAll([], []);
-    //     $this->view('dashboard/index', $data);
-      
-    // }
     function addUser(){
         $data['main'] = 'user/add';
         $this->view('dashboard/index', $data);
@@ -28,43 +38,69 @@ class User extends Controller {
     function add(){
         if(isset($_POST["addUser"]))
         {
+            if(isset($_POST['admin'])){
+                $admin = 1;
+            }
+            else{
+                $admin = 0;
+            }
             $user = [
                'name'=>$_POST['name'],
                'username'=>$_POST['username'],
                'matkhau'=>$_POST['matkhau'],
-               'gmail'=>$_POST['gmail']       
+               'gmail'=>$_POST['gmail'],
+               'admin'=>$admin
             ];
         $dialog = $this->userModel->add($user);
         $data['main'] = 'user/add';
-        $data["dialog"] =  $dialog;
-        $this->view('dashboard/index', $data);
+        if($dialog == "Tai khoan da ton tai "){  
+            $data["dialog"] =  $dialog;
+            $data['main'] = 'user/add';
+            $this->view('dashboard/index', $data);
+        }
+        else{
+            Header("Location:" . URL . 'user');
+
+        }
         }
       
     }
 
     function edit($id){
+        $data['main'] = 'user/edit';
+        $data['user'] =  $this->userModel->getuser($id);    
+        $username = $data['user']['username'];
+
         if(isset($_POST["editUser"])){
+            if(isset($_POST['admin'])){
+                $admin = 1;
+            }
+            else{
+                $admin = 0;
+            }
             $user = [
                 'name'=>$_POST['name'],
-                'username'=>$_POST['username'],
+                'username'=>$username,
                 'matkhau'=>$_POST['matkhau'],
-                'gmail'=>$_POST['gmail']       
+                'gmail'=>$_POST['gmail'],
+                'admin'=>$admin       
              ];
               $this->userModel->update($id, $user);
-              $this->index();
+              Header("Location:" . URL . 'user');
         }
-        else {
-            $data['main'] = 'user/edit';
-            $data['user'] =  $this->userModel->getuser($id);    
+        else{
             $this->view('dashboard/index', $data);
         }
+        // else {
+        //     $data['main'] = 'user/edit';
+        //     $data['user'] =  $this->userModel->getuser($id);    
+        //     $this->view('dashboard/index', $data);
+        // }
        
     }
     function delete($id){
-        echo $id;
-     
         $this->userModel->destroy($id);
-        $this->index();
+        Header("Location:" . URL . 'user');
     }
 
     function login(){
@@ -77,7 +113,7 @@ class User extends Controller {
          }
          $username = validate($_POST['username']);
          $password = validate($_POST['matkhau']);
-         
+         $lct = validate($_POST['lct']);
          if (empty($username)) {
             $_SESSION['error'] = "Username  is required";
             Header("Location:" . URL . 'LoginAndRegister');
@@ -88,16 +124,21 @@ class User extends Controller {
             exit();
          }
         $flag =  $this->userModel->Login($username, $password);
+        
          if($flag)
          {
             unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
-            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
-            if(isset($_SESSION['admin'])){
+            $_SESSION['token'] = $flag['token'];
+            $user = (array) jwt::decode($_SESSION['token'], 'CuongGia', true);
+            $_SESSION['user'] = $user;
+            //$_SESSION['user'] = $this->userModel->getuserbyUsername($username);
+           
+            if($lct == "admin"){
                 unset($_SESSION['admin']);
                 Header("Location:" . URL . 'dashboard');
             }
-            else if(isset($_SESSION['payment'])){
+            else if($lct == "payment"){
                 unset($_SESSION['payment']);
                 Header("Location:" . URL . 'pet/payment');
             }
@@ -106,8 +147,9 @@ class User extends Controller {
             }
          }
          
-         else 
+         else
          {  
+            //echo "ok0"; die();
             $_SESSION['error'] = "Username or Password  is incorrect";
             Header("Location:" . URL . 'LoginAndRegister');
          }
@@ -116,6 +158,7 @@ class User extends Controller {
 
     public function logout(){
         unset($_SESSION['user']);
+        unset($_SESSION['token']);
         header("location:" . URL);
     }
 
@@ -128,6 +171,7 @@ class User extends Controller {
             $username = $_POST["username"];
             $password = $_POST["password"];
             $password1 = $_POST["again"];
+            $admin = 0;
          
             
             // function validate($data){
@@ -163,7 +207,7 @@ class User extends Controller {
             //      exit();
             //  }
          
-           $flag =  $this->userModel->InserUserModel($name,$email,$username, $password );
+           $flag =  $this->userModel->InserUserModel($name,$email,$username, $password, $admin);
            if($flag)
            {
               
@@ -171,11 +215,14 @@ class User extends Controller {
               // $this->view('home/index', $data);
               // goi trang home xu? ly lay data pet cac kieu
               // flag dung de xet layout dong. cho login menu
+              $_SESSION['error'] = "Register complete";
+              Header("Location:" . URL . 'LoginAndRegister');
            }
            else 
            {  
                // goi lai trang login hien dong thong bao that bai
-               echo "false";
+               $_SESSION['error'] = "Cannot register";
+               Header("Location:" . URL . 'LoginAndRegister');
            }
            
         }

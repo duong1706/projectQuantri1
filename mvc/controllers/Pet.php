@@ -12,10 +12,28 @@
             $this->postModel = new PostModel();
         }
         function index(){
-            $data['main'] = 'pet/list';
-            $data['pet'] = $this->petModel->getAll([], []);
-         //   $data['posts'] = $this->postModel->get();
-            $this->view('dashboard/index', $data);
+            $_SESSION['lct'] = 2;
+            if(isset($_SESSION["user"])){
+                if($_SESSION["user"]['admin']){
+                    $data['pet'] = $this->petModel->getAll([], []);
+                    $data['main'] = 'pet/list';
+                    $this->view('dashboard/index', $data);
+                }
+                else{
+                    Header('location:' . URL);
+                }
+            }
+            
+            else{
+                $_SESSION['lct'] = 2;
+                $_SESSION['admin'] = 1;
+                Header('location:' . URL . 'LoginAndRegister');
+            }
+
+        //     $data['main'] = 'pet/list';
+        //     $data['pet'] = $this->petModel->getAll([], []);
+        //  //   $data['posts'] = $this->postModel->get();
+        //     $this->view('dashboard/index', $data);
         }
         function detail($id){
             $_SESSION['lct'] = 1;
@@ -37,7 +55,7 @@
         }
         function delete($id){
             $this->petModel->destroy($id);
-            $this->index();
+            Header("Location:" . URL . 'pet');
         }
         function store(){
             if(isset($_POST['addPet'])){
@@ -48,7 +66,7 @@
                     $anh = $_FILES['img1']['name'];
                     $path = "./public/style/images/" . $anh;
 
-                    //move_uploaded_file($tmp_name, $path);
+                    move_uploaded_file($tmp_name, $path);
                         $pet = [
                             'name'=>$_POST['name'],
                             'content'=>$_POST['content'],
@@ -58,7 +76,7 @@
                             'image'=>$anh
                         ];
                         $this->petModel->add($pet);
-                        $this->index();
+                        Header("Location:" . URL . 'pet');
                     }
             }
             $data['main'] = 'pet/add';
@@ -95,7 +113,7 @@
                 }
 
                 $this->petModel->update($id ,$pet);
-                $this->index();
+                Header("Location:" . URL . 'pet');
             }
             $data['main'] = 'pet/edit';
             $data['pet'] = $this->petModel->getPet($id);
@@ -112,18 +130,9 @@
                 $pet['count'] = $_SESSION['cart'][$id]['count'] + 1;
             }
             $_SESSION['cart'][$id] = $pet;
-            //$this->detail($id);
-            if($_SESSION['lct'] == 1){
-                header("location:" . URL . 'pet/detail/' . $id);
-            }
-            //print_r($data['cart']); die();
-            else if($_SESSION['lct'] == 0){
-                ///$this->view('home/index', $data);
-                //print_r($data); die();
-                header("location:" . URL);
-            }
-
+            
         }
+
         function deletecart($id){
             unset($_SESSION['cart'][$id]);
             if($_SESSION['lct'] == 1){
@@ -133,22 +142,30 @@
                 header("location:" . URL);
             }
         }
+
+        function delallcart(){
+            unset($_SESSION['cart']);
+            header("location:" . URL);
+        }
+
         function updatecart($id){
             $value = $_POST['value'];
             $_SESSION['cart'][$id]['count'] = $value;
         }
+
         function payment(){
-            $_SESSION['lct'] = 5;
-            $_SESSION['payment'] = 1;
-            if(isset($_SESSION['user'])){
+            // $_SESSION['lct'] = 5;
+            // $_SESSION['payment'] = 1;
+            // //if(isset($_SESSION['user'])){
                 $data['customer'] = $_SESSION['user'];
                 $data['cart'] = $_SESSION['cart'];
                 $this->view('payment/payment', $data);
-            }
-            else{
-                Header('location:' . URL . 'LoginAndRegister');
-            }
+            // }
+            // else{
+            //     Header('location:' . URL . 'LoginAndRegister');
+            // }
             
         }
+
     }
 ?>

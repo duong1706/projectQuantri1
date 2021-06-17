@@ -7,10 +7,6 @@ class PetModel extends BaseModel{
         return $pet;
     }
 
-<<<<<<< HEAD
-=======
-    ///
->>>>>>> ca07bc4518764380c01a6b9ee96c97de7ce50525
     public function getPet($id){
         $pet = $this->detail(self::TABLE, $id);
         return $pet;

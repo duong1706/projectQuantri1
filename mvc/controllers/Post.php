@@ -13,7 +13,6 @@ class Post extends Controller {
        //echo $_SESSION['user'];
       if(isset($_POST["content"]))
       {
-        
         $flag = $this->postModel->add($_POST["content"],$id,$_SESSION['user']['name']);
       }
        

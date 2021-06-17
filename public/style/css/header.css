@@ -1,3 +1,12 @@
+#header1{
+  background: #fff;
+}
+
+.toggle__icon{
+  background-image: url(./public/style/images/menu-button.svg);
+}
+
+
 .navbar_home{
     width: 100% !important;
     justify-content: space-between !important;
@@ -64,7 +73,7 @@
 
 #numcart{
   position: absolute;
-  top: 0px;
+  top: -7px;
   left: 17px;
   font-size: 10px;
   border-radius: 100%;

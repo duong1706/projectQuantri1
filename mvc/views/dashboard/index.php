@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="<?php echo URL . 'public/style/css/dashboard.css'; ?>">
@@ -14,7 +13,7 @@
 
     <style>
         .trong{
-            color: #000;
+            color: #fff;
             border: none;
             background: transparent !important;
         }

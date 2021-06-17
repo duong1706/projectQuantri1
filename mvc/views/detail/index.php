@@ -8,23 +8,17 @@
   <script src="https://kit.fontawesome.com/c52c16b666.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Passero+One&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/detail.css'; ?>">
-  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/cart.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/footer.css'; ?>">
   <link rel="stylesheet" href="<?php echo URL . 'public/style/css/loader.css'; ?>">
-<<<<<<< HEAD
+  <link rel="stylesheet" href="<?php echo URL . 'public/style/css/header.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL . 'public/style/css/slick/slick-theme.css'; ?>">
-=======
-  <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick.css'; ?>">
-  <link rel="stylesheet" type="text/css" href="<?php echo URL .'public/style/css/slick/slick-theme.css'; ?>">
->>>>>>> c4cb6433409f5013c9573c360f3b801b72c3ed17
   <style type="text/css">
     .slider {
       width: 100%;
@@ -53,30 +47,39 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+    <span style="display: none;" id="check_login">
+      <?php
+        if(isset($_SESSION['user'])){
+          echo $_SESSION['user']['username'];
+        }
+      ?>
+    </span>
   <div id="preloader">
     <div class="loader"></div>
   </div>
+  
   <div class="detail__pet">
+  <div id="header1">
+          <?php
+            require_once './mvc/views/hf/header.php';
+          ?>
+        </div>
     <div id="product">
 
       <div class="ok">
         <div class="name">
-=======
-    <div id="preloader">
-      <div class="loader"></div>
-    </div>
-    <div class="detail__pet">
-  <div id="product">
-    
-    <div class="ok">
-      <div class="name">
->>>>>>> c4cb6433409f5013c9573c360f3b801b72c3ed17
-          <ul>
+          <ul style="
+    display: flex;
+    align-items: center;
+    padding: 1em 0 1em 0;
+    margin: 0;
+">
             <li><a href="<?php echo URL; ?>">Home</a></li>
             <li><i class="fas fa-angle-double-right"></i></li>
             <li>
-              <p><?php echo $data['pet']['name']; ?></p>
+              <p style="
+    margin: 0;
+"><?php echo $data['pet']['name']; ?></p>
             </li>
           </ul>
         </div>
@@ -122,7 +125,6 @@
             </div>
           </div>
 
-<<<<<<< HEAD
           <div class="col-lg-7  col-xl-5 petprice">
             <div class="contain">
               <h1 class="petname"><?php echo 'Pet name: ' . $data['pet']['name']; ?></h1>
@@ -134,37 +136,16 @@
                 <i class="fas fa-star"></i>
                 <a class="reviewNum" href="#">(1 customer review)</a>
               </div>
-              <h2 class="price"><?php echo 'Price: $' . $data['pet']['price']; ?></h2>
+              <h2 class="price"><?php echo 'Price: $' . number_format($data['pet']['price']); ?></h2>
               <hr>
               <div class="addcart">
-                <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1"><i class="fas fa-shopping-basket"></i></a></button>
+                <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add2"><i class="fas fa-shopping-basket"></i></a></button>
                 <button id="wishlist"><i class="far fa-heart"></i></button>
                 <button id="reset"><i class="fas fa-sync"></i></button>
               </div>
-              <p class="des1"><b>Description: </b><?php echo $data['pet']['content'] . " One Piece (ワンピース Wan Pīsu?), từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro, được đăng định kì trên tạp chí Weekly Shōnen Jump, ra mắt lần đầu trên ấn bản số 34 vào ngày 19 tháng 7 năm 1997. Bản tankōbon của truyện do Shueisha phát hành với tập đầu tiên vào ngày 24 tháng 12 năm 1997. One Piece kể về cuộc hành trình của Monkey D. Luffy - thuyền trưởng của băng hải tặc Mũ Rơm và các đồng đội của cậu. Luffy tìm kiếm vùng biển bí ẩn nơi cất giữ kho báu lớn nhất thế giới One Piece, với mục tiêu trở thành Tân Vua Hải Tặc.
-=======
-        <div class="col-lg-7  col-xl-5 petprice">
-          <div class="contain">
-            <h1 class="petname"><?php echo 'Pet name: ' . $data['pet']['name']; ?></h1>
-            <div class="review">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <a class="reviewNum" href="#">(1 customer review)</a>
-            </div>
-            <h2 class="price"><?php echo 'Price: $' . $data['pet']['price']; ?></h2>
-            <hr>
-            <div class="addcart">
-               <button id="add"><a href="<?php echo URL . 'pet/addcart/' . $data['pet']['idPet']; ?>" class="add1" ><i class="fas fa-shopping-basket"></i></a></button>
-                <button id="wishlist"><i class="far fa-heart"></i></button>
-                <button id="reset"><i class="fas fa-sync"></i></button>
-                </div>
-            <p class="des1"><b>Description: </b><?php echo $data['pet']['content'] . " One Piece (ワンピース Wan Pīsu?), từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro, được đăng định kì trên tạp chí Weekly Shōnen Jump, ra mắt lần đầu trên ấn bản số 34 vào ngày 19 tháng 7 năm 1997. Bản tankōbon của truyện do Shueisha phát hành với tập đầu tiên vào ngày 24 tháng 12 năm 1997. One Piece kể về cuộc hành trình của Monkey D. Luffy - thuyền trưởng của băng hải tặc Mũ Rơm và các đồng đội của cậu. Luffy tìm kiếm vùng biển bí ẩn nơi cất giữ kho báu lớn nhất thế giới One Piece, với mục tiêu trở thành Tân Vua Hải Tặc.
->>>>>>> c4cb6433409f5013c9573c360f3b801b72c3ed17
+              <p class="des1"><b>Description: </b><?php echo $data['pet']['content'] . " At some point during the Void Century, a man named Joy Boy came across an island located at the end of the Grand Line. Here, he left behind a treasure of unimaginable value.[2] Stories of this treasure on the final island peaked the interest of Gol D. Roger, and he took the World Government forbidding exploration of the island as evidence of it being real.[3]
 
-One Piece cũng được chuyển thể sang một vài loại hình truyền thông khác nhau. Một OVA được hãng Production I.G sản xuất vào năm 1998. Tiếp đó, phiên bản anime dài tập do hãng Toei Animation thực hiện, bắt đầu lên sóng truyền hình Nhật Bản vào năm 1999. Toei cũng sản xuất 11 phim hoạt hình, một OVA và 5 chương trình truyền hình đặc biệt liên quan. Một vài công ty đã phát triển nhiều sản phẩm khác dựa vào truyện như thẻ game, video game. Bộ manga phiên bản tiếng Anh được cấp phép cho hãng Viz Media phát hành ở thị trường Bắc Mỹ, hãng Gollancz Manga ở Anh Quốc, Madman Entertainment ở Australia và New Zealand. Ở Bắc Mỹ, bộ anime được cấp phép bản địa hóa và phân phối bằng tiếng Anh bởi hãng Funimation Entertainment."; ?></p>
+Only the members of the Roger Pirates that journeyed to the island know what exactly the treasure consists of. Upon arriving on the island and seeing Joy Boy's treasure, the Roger Pirates simply began to laugh. Roger described it as a tale full of laughs, which gave him the idea to name the final island Laugh Tale.[2] Sometime after the Roger Pirates' discovery, the world at large would begin to refer to the enigmatic treasure as the One Piece.."; ?></p>
             </div>
 
           </div>
@@ -184,13 +165,13 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
           <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
 
-<<<<<<< HEAD
             On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.
 
             In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-         
+         <div id="review_pet">
+          <div id="review__pet">
           <?php
           
          
@@ -205,73 +186,17 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
             echo '</div>';
           }
           ?>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
           </div>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
           </div>
-          <div class="comment">
-            <div class="user">
-              <h1>Huy</h1>
-            </div>
-            <div class="content_cmt">
-              <p>Sanr phẩm này thật tuyệt vời</p>
-            </div>
-          </div>
+          
           <h4>Your review</h4>
           <div class="yourcmt">
-            <form action="<?php echo URL . 'post/addpost/' .$data['pet']['idPet']; ?>" method="post">
-              <input type="text" placeholder="type somethings" class="content__post" name="content">
-              <button class="add_post" type="submit"><i class="fas fa-paper-plane"></i></button>
+            <form action="<?php echo URL . 'post/addpost/' .$data['pet']['idPet']; ?>" method="post" style="display: flex; width: 100%;">
+              <input type="text" placeholder="type somethings" class="content__post" name="content" id="content">
+              <button class="add_post" type="submit" id="add_cmt"><i class="fas fa-paper-plane"></i></button>
             </form>
           </div>
 
-=======
-              On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.
-              
-              In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-      </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <div class="comment">
-          <div class="user">
-            <h1>Huy</h1>
-          </div>
-          <div class="content_cmt">
-            <p>Sanr phẩm này thật tuyệt vời</p>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="user">
-            <h1>Huy</h1>
-          </div>
-          <div class="content_cmt">
-            <p>Sanr phẩm này thật tuyệt vời</p>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="user">
-            <h1>Huy</h1>
-          </div>
-          <div class="content_cmt">
-            <p>Sanr phẩm này thật tuyệt vời</p>
-          </div>
-        </div>
-        <h4>Your review</h4>
-        <div class="yourcmt">
-          <input type="text" placeholder="type somethings">
-          <button><i class="fas fa-paper-plane"></i></button>
->>>>>>> c4cb6433409f5013c9573c360f3b801b72c3ed17
         </div>
       </div>
     </div>
@@ -329,23 +254,19 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
     </div>
   </div>
 
-  <div id="show_cart">
-    <?php
-    require_once "./mvc/views/payment/cart.php"
-    ?>
-  </div>
+  
   <div>
     <?php
     require_once './mvc/views/hf/footer.php';
     ?>
   </div>
-
-  <script src="<?php echo URL . 'public/style/js/loader.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo URL . 'public/style/js/cart.js'; ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php echo URL . 'public/style/js/loader.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo URL . 'public/style/js/post.js'; ?>" type="text/javascript" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
   <script src="../public/style/css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
+    
     $(document).on('ready', function() {
       $(".regular").slick({
         infinite: true,
@@ -353,10 +274,34 @@ One Piece cũng được chuyển thể sang một vài loại hình truyền th
         slidesToScroll: 4
       });
 
+      $('#add_cmt').click(function(){
+        event.preventDefault();
+        var link = window.location.href;
+        var link2 = link.replace('pet/detail', 'post/addpost');
+        var content = $('#content').val();
+        console.log(link2);
+        console.log(link);
+        $.ajax({
+          url: link2,
+          type: 'POST',
+          data: {content: content},
+          success: function() {
+            Swal.fire({
+            icon: 'success',
+            title: 'Review Complete',
+            });
+            $('#review_pet').load(link + ' '+ '#review__pet');
+            $('#content').val('');
+          }
+        })
+      });
+
     });
+
+    
   </script>
 
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>

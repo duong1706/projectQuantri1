@@ -1,3 +1,9 @@
+<style>
+  .foot2{
+    margin: 0 !important;
+  }
+</style>
+
 <div id="footer">
       <div class="row" id="foot1">
         <div class="col-md-6 social">

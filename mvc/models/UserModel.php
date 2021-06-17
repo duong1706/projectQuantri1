@@ -61,7 +61,7 @@
         $matkhau=$user["matkhau"];
         $gmail=$user["gmail"];
         $admin=$user["admin"];
-        $token = JWT::encode($user, "Doiqua");
+        $token = JWT::encode($user, Key);
         //$token=JWT::encode($token, "Doiqua");
 
         $qr = "UPDATE users SET name='$name',gmail='$gmail', matkhau='$matkhau', token='$token', admin='$admin' WHERE id='$id' ";
@@ -111,7 +111,7 @@
             'gmail'=>$gmail,
             'admin'=>$admin       
          ];
-            $token = JWT::encode($user, "Doiqua");
+            $token = JWT::encode($user, Key);
             $ir = "INSERT INTO users (name, gmail, username, matkhau, token, admin) VALUES ('$name', '$gmail', '$username', '$password', '$token', '$admin')";
             $resI = mysqli_query($this->connect, $ir);
          //   echo "Hello";
@@ -128,8 +128,18 @@
         }
     }
 
-    public function changePass($id, $pass){
-        $qr = "UPDATE users SET matkhau='$pass' WHERE id='$id' ";
+    public function changePass($username, $pass){
+        $user = [
+            'name' => $_SESSION['user']['name'],
+            'username' => $_SESSION['user']['username'],
+            'matkhau'=>$pass,
+            'gmail'=>$_SESSION['user']['gmail'],
+            'admin'=>$_SESSION['user']['admin']
+        ];
+        $token = JWT::encode($user, Key);
+        $_SESSION['user'] = $user;
+        $_SESSION['token'] = $token;
+        $qr = "UPDATE users SET matkhau='$pass', token='$token' WHERE username='$username'";
         $res = mysqli_query($this->connect, $qr);
     }
  }

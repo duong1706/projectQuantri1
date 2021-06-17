@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 15, 2021 lúc 01:46 PM
+-- Thời gian đã tạo: Th6 17, 2021 lúc 05:43 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -20,6 +20,43 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `petapi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bills`
+--
+
+CREATE TABLE `bills` (
+  `id` int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `totalprice` double NOT NULL,
+  foreign key (`user`) references `users`(`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `bills`
+--
+
+INSERT INTO `bills` (`id`, `user`, `date`, `totalprice`) VALUES
+(1, 'okok', '2021-06-15', 10),
+(2, 'okok', '2021-06-02', 30),
+(5, 'okok', '2021-06-15', 344),
+(6, 'okok', '2021-06-15', 3446),
+(7, 'okok', '2021-06-06', 271262),
+(8, 'okok', '2021-06-16', 271258),
+(9, 'okok', '2021-06-16', 90004),
+(10, 'okok', '2021-06-16', 90008),
+(11, 'okok', '2021-06-16', 180005),
+(12, 'okok1', '2021-06-04', 344),
+(13, 'okok1234', '2021-06-04', 344),
+(14, '343242342', '2021-06-06', 271262),
+(15, 'hieu', '2021-06-17', 1511),
+(16, 'hieu', '2021-06-17', 130),
+(17, 'hieu', '2021-06-17', 130),
+(18, 'hieu', '2021-06-17', 130),
+(19, 'hieu', '2021-06-17', 130);
 
 -- --------------------------------------------------------
 
@@ -42,7 +79,7 @@ CREATE TABLE `pet` (
 --
 
 INSERT INTO `pet` (`idPet`, `name`, `image`, `content`, `color`, `price`, `star`) VALUES
-(16, 'Cho 1', 'cho1.jpg', 'Long vang', 'vang', 90000, 5),
+(16, 'Cho Tây Campuchia', 'cho1.jpg', 'Long đen, 70kg, cao 2m1', 'vang', 10, 5),
 (17, 'Cho 2', 'cho2.jpg', 'Long den', 'den', 500, 5),
 (18, 'Cho 3', 'cho3.jpg', 'Long xu', 'vang', 125, 0),
 (19, 'Meo 1', 'meo1.jpg', 'Long ngan', 'Xanh', 125, 4),
@@ -61,8 +98,7 @@ INSERT INTO `pet` (`idPet`, `name`, `image`, `content`, `color`, `price`, `star`
 (32, 'Cho 9', 'x10.jpg', 'Long vang', 'Xanh', 500, 4),
 (33, 'Cho 10', 'x12.jpg', 'Co long', 'red', 500, 5),
 (34, 'Chuot 3', 'x13.jpg', 'Long ngan', 'vang', 235, 4),
-(35, 'Chuot 4', 'x14.jpg', 'Long ngan', 'den', 90000, 0),
-(36, 'Chuot 5', 'x16.jpg', 'Long vang', 'blue', 235, 0);
+(49, 'Thỏ Lào', 'x16.jpg', 'Lông trắng như tuyết', 'trắng', 250, 1);
 
 -- --------------------------------------------------------
 
@@ -74,7 +110,8 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
-  `pet_id` int(11) NOT NULL
+  `pet_id` int(11) NOT NULL,
+  foreign key (`pet_id`) references `pet`(`idPet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -86,7 +123,12 @@ INSERT INTO `posts` (`id`, `name`, `content`, `pet_id`) VALUES
 (2, 'okok', '1244', 17),
 (3, 'okok', 'okok', 16),
 (4, 'okok', '3452', 16),
-(5, 'okok', '4543', 16);
+(5, 'okok', '4543', 16),
+(6, 'okok', 'an com roi', 17),
+(7, 'hieu', 'Sản phẩm thật tuyệt vời', 19),
+(8, 'admin', 'Cám ơn cậu', 19),
+(9, 'admin', 'hay quas', 24),
+(10, 'admin', 'dep qua', 27);
 
 -- --------------------------------------------------------
 
@@ -100,22 +142,29 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `matkhau` varchar(255) NOT NULL,
   `gmail` varchar(255) NOT NULL,
-  `token` text NOT NULL
+  `token` text NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `name`, `matkhau`, `gmail`, `token`) VALUES
-(8, '343242342', '342342242', 'q4242', '3445rerw', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiMzQyMzQyMjQyIiwidXNlcm5hbWUiOiIzNDMyNDIzNDIiLCJtYXRraGF1IjoicTQyNDIiLCJnbWFpbCI6IjM0NDVyZXJ3In0.34PFBnUXuaIHdu9oi00iyDRzL8Cvoq7FNsKmAnXpIjU'),
-(10, 'okok1', '12', 'okok', 'okok@gmail.com', ''),
-(11, 'okok1234', '1234', '1234', '123@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiMTIzNCIsInVzZXJuYW1lIjoib2tvazEyMzQiLCJtYXRraGF1IjoiMTIzNCIsImdtYWlsIjoiMTIzQGdtYWlsLmNvbSJ9.YJN_99m-jmyGVpXQ9NwSDgiqEHqJA-do-7sIdJpRF7A'),
-(12, 'okok', 'okok', 'okok', 'taolahieu099@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoib2tvayIsInVzZXJuYW1lIjoib2tvayIsIm1hdGtoYXUiOiJva29rIiwiZ21haWwiOiJ0YW9sYWhpZXUwOTlAZ21haWwuY29tIn0.4XSmfunT08zWdsWdwo4blVJJCCPx_5-CWVsrqsD49PI');
+INSERT INTO `users` (`id`, `username`, `name`, `matkhau`, `gmail`, `token`, `admin`) VALUES
+(11, 'okok1234', '1234', '1234', '123@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiMTIzNCIsInVzZXJuYW1lIjoib2tvazEyMzQiLCJtYXRraGF1IjoiMTIzNCIsImdtYWlsIjoiMTIzQGdtYWlsLmNvbSIsImFkbWluIjoxfQ.F84u9oRfqJXnqty_Lww8vFX1eFVuklTAD8QISHenbzM', 1),
+(20, 'admin', 'admin', 'okok', 'admin@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbW1pbiIsIm1hdGtoYXUiOiJhZG1pbiIsImdtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiYWRtaW4iOjF9.DgeBLUb8vRK96dN3ZViuGZXmO4VdSvcA00Y3iN3I8tI', 1),
+(21, 'hieu', 'hieu', '1234', 'trunghieungo1706@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiaGlldSIsInVzZXJuYW1lIjoiaGlldSIsIm1hdGtoYXUiOiIxMjM0IiwiZ21haWwiOiJ0cnVuZ2hpZXVuZ28xNzA2QGdtYWlsLmNvbSIsImFkbWluIjowfQ.AzXQzbZDkwY-K4RmdA9WPKdQMba_lnJnslrqGbnEh4c', 0),
+(23, 'lao', 'lao', 'lo', 'lao@gmail.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoibGFvIiwidXNlcm5hbWUiOiJsYW8iLCJtYXRraGF1IjoibG8iLCJnbWFpbCI6Imxhb0BnbWFpbC5jb20iLCJhZG1pbiI6MH0.UgjknWv4THYtlCoI4N6rJvpmLfdOeUOpInzhiDOPmbQ', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `pet`
@@ -140,22 +189,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `bills`
+--
+ALTER TABLE `bills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT cho bảng `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `idPet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `idPet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

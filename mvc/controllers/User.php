@@ -130,7 +130,7 @@ class User extends Controller {
             unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
             $_SESSION['token'] = $flag['token'];
-            $user = (array) jwt::decode($_SESSION['token'], 'CuongGia', true);
+            $user = (array) jwt::decode($_SESSION['token'], Key, true);
             $_SESSION['user'] = $user;
             //$_SESSION['user'] = $this->userModel->getuserbyUsername($username);
            
@@ -262,7 +262,8 @@ class User extends Controller {
              }
 
              if($oldPassword == $_SESSION['user']['matkhau']){
-                 $this->userModel->changePass($_SESSION['user']['id'], $newPassword);
+                 $this->userModel->changePass($_SESSION['user']['username'], $newPassword);
+                 
                  Header("Location:" . URL);
              }
              else{

@@ -58,7 +58,7 @@
                 flex-direction: column;
                 top: 0;
                 /* position: fixed; */
-                box-shadow: 10px 7px 17px 10px #656262a8;
+                
                 transition: 0.4s;
             }
             .checkout 

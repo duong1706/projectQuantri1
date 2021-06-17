@@ -92,7 +92,7 @@
         }
     }
 
-    public function InserUserModel($name,$gmail,$username ,$password  )
+    public function InserUserModel($name,$gmail,$username ,$password, $admin)
     {
         $qr = "SELECT * FROM users WHERE username='$username' ";
         $res = mysqli_query($this->connect, $qr);
@@ -108,10 +108,11 @@
             'name'=>$name,
             'username'=>$username,
             'matkhau'=>$password,
-            'gmail'=>$gmail       
+            'gmail'=>$gmail,
+            'admin'=>$admin       
          ];
             $token = JWT::encode($user, "Doiqua");
-            $ir = "INSERT INTO users (name, gmail, username, matkhau, token) VALUES ('$name', '$gmail', '$username', '$password', '$token')";
+            $ir = "INSERT INTO users (name, gmail, username, matkhau, token, admin) VALUES ('$name', '$gmail', '$username', '$password', '$token', '$admin')";
             $resI = mysqli_query($this->connect, $ir);
          //   echo "Hello";
             if($resI)

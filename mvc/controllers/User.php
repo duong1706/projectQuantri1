@@ -171,6 +171,7 @@ class User extends Controller {
             $username = $_POST["username"];
             $password = $_POST["password"];
             $password1 = $_POST["again"];
+            $admin = 0;
          
             
             // function validate($data){
@@ -206,7 +207,7 @@ class User extends Controller {
             //      exit();
             //  }
          
-           $flag =  $this->userModel->InserUserModel($name,$email,$username, $password );
+           $flag =  $this->userModel->InserUserModel($name,$email,$username, $password, $admin);
            if($flag)
            {
               

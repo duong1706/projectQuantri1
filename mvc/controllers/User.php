@@ -129,10 +129,10 @@ class User extends Controller {
          {
             unset($_SESSION['error']);
             $_SESSION['flag'] = $flag;
-            $_SESSION['token'] = $flag['token'];
-            $user = (array) jwt::decode($_SESSION['token'], Key, true);
-            $_SESSION['user'] = $user;
-            //$_SESSION['user'] = $this->userModel->getuserbyUsername($username);
+            // $_SESSION['token'] = $flag['token'];
+            // $user = (array) jwt::decode($_SESSION['token'], Key, true);
+            // $_SESSION['user'] = $user;
+            $_SESSION['user'] = $this->userModel->getuserbyUsername($username);
            
             if($lct == "admin"){
                 unset($_SESSION['admin']);
@@ -149,7 +149,6 @@ class User extends Controller {
          
          else
          {  
-            //echo "ok0"; die();
             $_SESSION['error'] = "Username or Password  is incorrect";
             Header("Location:" . URL . 'LoginAndRegister');
          }

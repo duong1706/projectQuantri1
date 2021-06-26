@@ -7,8 +7,9 @@
        public function add($content,$pet_id,$name)
        {
             $qr = "INSERT INTO posts(name,content,pet_id) VALUES ('$name','$content','$pet_id')";
-            $res = mysqli_query($this->connect, $qr);
-            if($res)
+            $res = $this->connect->prepare($qr);
+            $res->execute();
+            if($res->affected_rows > 0)
             {
               
                 return true;    
@@ -21,20 +22,16 @@
        }
        public function get($id)
        {
-           $qr = "SELECT * FROM posts WHERE pet_id=${id}";
-           $result = mysqli_query($this->connect, $qr);
-        //  $posts = mysqli_fetch_array($result);
-        $data = [];
-            while($row = mysqli_fetch_assoc($result)){
-                array_push($data, $row);
+            $sql = "SELECT * FROM posts WHERE pet_id=${id}";
+            $read = $this->connect->prepare($sql);
+            $read->execute();
+            $result = $read->get_result();
+            $data = [];
+            while($row = $result->fetch_assoc()){
+            array_push($data, $row);
             }
-            // print_r($data);
-            // die();
-         return  $data;
-        //    if(isset($posts))
-        //    {
-        //        return $posts;
-        //    }
+            return  $data;
+           
        }
 
     }
